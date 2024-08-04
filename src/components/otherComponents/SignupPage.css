@@ -1,0 +1,18 @@
+/* SignupPage.css */
+
+.form-container {
+    max-width: 500px; /* Set a maximum width for the form */
+    margin: auto; /* Center the form */
+}
+
+.input-field {
+    max-width: 100%; /* Ensure input fields do not exceed the container width */
+    margin-bottom: 1rem; /* Add space between fields */
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+    .input-field {
+        font-size: 0.875rem; /* Smaller font size for smaller screens */
+    }
+}

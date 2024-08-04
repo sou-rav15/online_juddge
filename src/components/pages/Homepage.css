@@ -1,0 +1,51 @@
+html, body {
+    height: 100%;
+    margin: 0;
+  }
+  
+  .homepage {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+  }
+  
+  .header {
+    padding: 50px 20px;
+    background-color: #f4f4f4;
+  }
+  
+  .header h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+  }
+  
+  .header p {
+    font-size: 1.2em;
+    color: #777;
+  }
+  
+  .quotes {
+    flex: 1;
+    margin: 30px 20px;
+  }
+  
+  .quotes blockquote {
+    font-size: 1.2em;
+    margin: 20px 0;
+    color: #555;
+    font-style: italic;
+  }
+  
+  .footer {
+    padding: 10px 20px;
+    background-color: #f4f4f4;
+    text-align: center;
+  }
+  
+  .footer p {
+    font-size: 0.9em;
+    color: #777;
+  }
+  

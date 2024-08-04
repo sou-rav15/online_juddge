@@ -1,0 +1,38 @@
+.formContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* border: 2px solid red; */
+    column-gap: px;
+    margin-top: 30px;
+
+}
+.formshadow{
+    margin-top: 50px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+width:500px;
+
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+
+
+}
+.formshadow form{
+    margin-top: 20px;
+}
+.formBox{
+    border: 2px solid  green;
+    margin-top: 1px;
+  
+}
+.formBox input{
+    min-width: 350px;
+    margin-bottom: 10px;
+}
+.formBox label{
+    font: 600;
+
+}

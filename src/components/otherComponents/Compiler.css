@@ -1,0 +1,35 @@
+/* src/CodeEditor.css */
+
+.code-area,
+.input-area,
+.output-area {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.code-area {
+    border: 1px solid #ccc;
+}
+
+.input-area {
+    border: 1px solid #007bff;
+    border-color: #007bff;
+}
+
+.output-area {
+    border: 1px solid #28a745;
+}
+
+.code-area:focus,
+.input-area:focus,
+.output-area:focus {
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
+    outline: none;
+}
+
+h1 {
+    font-size: 2rem;
+}
