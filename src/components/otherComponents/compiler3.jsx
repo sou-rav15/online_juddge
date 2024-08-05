@@ -8,56 +8,56 @@ const Compiler3 = ({ problemId }) => {
   const [code, setCode] = useState('');
   const [input, setInput] = useState('');
   const [output, setOutput] = useState('');
-  
+
 
   const handleRunCode = () => {
     // Logic for running code (e.g., send code and input to backend)
     setOutput('Output will be displayed here.');
   };
 
-  const handleSubmitCode = async(e) => {
+  const handleSubmitCode = async (e) => {
     // Logic for submitting code (e.g., for assessment or storing solutions)
 
-// console.log(language, 'problemid',problemId,code);
+    // console.log(language, 'problemid',problemId,code);
     e.preventDefault()
-const payLoad= {
-    problem_id: problemId,
-  language,
-  code
-};
-if(!code){
-  return HandleError("code is empty");
-}
+    const payLoad = {
+      problem_id: problemId,
+      language,
+      code
+    };
+    if (!code) {
+      return HandleError("code is empty");
+    }
 
-try {
-  const url = "http://localhost:8000/CheckTestCases";
-const response = await  fetch(url,{
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify(payLoad)
-  
-})
-// console.log(response);
+    try {
+      const url = "http://localhost:8000/CheckTestCases";
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payLoad)
 
-const result =await response.json();
-// console.log('result is->',result);
+      })
+      // console.log(response);
 
-const Status = result.map((obj) => obj.status);
-        const finalStatus = Status.every(state => state === 'Accepted') ? 'Accepted' : 'Not Accepted';
-const statusMessages = result.map((obj, index) => {
-  return `Test Case ${index + 1}: ${obj.status}`;
-});
-// console.log('staus message->',Status)
-setOutput(statusMessages.join('\n'));
+      const result = await response.json();
+      // console.log('result is->',result);
 
-handleProblemSubmission(problemId,finalStatus);
+      const Status = result.map((obj) => obj.status);
+      const finalStatus = Status.every(state => state === 'Accepted') ? 'Accepted' : 'Not Accepted';
+      const statusMessages = result.map((obj, index) => {
+        return `Test Case ${index + 1}: ${obj.status}`;
+      });
+      // console.log('staus message->',Status)
+      setOutput(statusMessages.join('\n'));
 
-} catch (error) {
-  console.log(error);
-}
-  //  console.log(code);
+      handleProblemSubmission(problemId, finalStatus);
+
+    } catch (error) {
+      console.log(error);
+    }
+    //  console.log(code);
 
     // setOutput('Code submitted successfully.');
   };
