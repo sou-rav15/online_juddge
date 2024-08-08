@@ -1,18 +1,93 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { HandleError } from '../../utils';
 import handleProblemSubmission from './SubmissionStatus';
+import saveCodeToBackend from './CodeSave';
+import { ToastContainer} from 'react-toastify';
+
 
 const Compiler3 = ({ problemId }) => {
   const [language, setLanguage] = useState('cpp');
   const [code, setCode] = useState('');
   const [input, setInput] = useState('');
   const [output, setOutput] = useState('');
+const userId= localStorage.getItem('userId')
+const apiUrl = import.meta.env.VITE_API_URL;
+// code fethcing
 
+useEffect(() => {
+  // console.log('im here')
+  const fetchSavedCode = async () => {
+    try {
+      const url = `${apiUrl}/codeSave/${userId}/${problemId}`; // Include userId
+      const headers={
+        headers:{
+          'Authorization':localStorage.getItem('token')
+        }
+      }
+      const response = await fetch(url,headers);
+      const result = await response.json();
+      if (result.code) {
+        setCode(result.code); // Set the fetched code in the editor
+      }
+    } catch (error) {
+      console.error('Error fetching saved code:', error);
+    }
+  };
 
-  const handleRunCode = () => {
+  fetchSavedCode();
+}, [problemId, userId]);
+
+  const handleRunCode = async(e) => {
     // Logic for running code (e.g., send code and input to backend)
-    setOutput('Output will be displayed here.');
+
+    e.preventDefault();
+    // if(language==="Javascript") setLanguage('js');
+// console.log('language is ->',language);
+    const payLoad = {
+      language,
+      code,
+      input // Include input in the payload
+    };
+
+    if (!code) {
+      
+      console.log('code is empty');
+      return HandleError("Code is empty");
+      
+    }
+// console.log("payLoad is->",payLoad)
+    try {
+      const url = `${apiUrl}/run`;
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payLoad)
+      });
+
+      const result = await response.json();
+     
+      console.log('result output',result.output);
+      // console.log(' error',result.error.stderr)
+      if(result.output){// this part is changed
+        console.log('here');
+        
+        setOutput(result.output);
+      }
+      else if(result.error&&result.error.stderr){
+        setOutput(result.error.stderr)
+      }
+else{
+  setOutput('something wrong check code and inputs again ,check if it is infinte loop')
+}
+    } catch (error) {
+      console.log(error);
+    }
+    console.log(code);
+
+    // setOutput('Output will be displayed here.');
   };
 
   const handleSubmitCode = async (e) => {
@@ -30,7 +105,7 @@ const Compiler3 = ({ problemId }) => {
     }
 
     try {
-      const url = "http://localhost:8000/CheckTestCases";
+      const url = `${apiUrl}/CheckTestCases2`;
       const response = await fetch(url, {
         method: 'POST',
         headers: {
@@ -42,17 +117,22 @@ const Compiler3 = ({ problemId }) => {
       // console.log(response);
 
       const result = await response.json();
-      // console.log('result is->',result);
+      console.log('result is->',result);
 
-      const Status = result.map((obj) => obj.status);
+  
+   const Status = result.map((obj) => obj.status);
       const finalStatus = Status.every(state => state === 'Accepted') ? 'Accepted' : 'Not Accepted';
       const statusMessages = result.map((obj, index) => {
         return `Test Case ${index + 1}: ${obj.status}`;
+
       });
+    
       // console.log('staus message->',Status)
       setOutput(statusMessages.join('\n'));
 
+
       handleProblemSubmission(problemId, finalStatus);
+      saveCodeToBackend(problemId,code);
 
     } catch (error) {
       console.log(error);
@@ -61,6 +141,10 @@ const Compiler3 = ({ problemId }) => {
 
     // setOutput('Code submitted successfully.');
   };
+
+
+
+
 
   return (
     <div>
@@ -74,7 +158,7 @@ const Compiler3 = ({ problemId }) => {
           <option value="cpp">C++</option>
           <option value="javascript">JavaScript</option>
           <option value="python">Python</option>
-          {/* <option value="java">Java</option> */}
+          <option value="java">Java</option>
         </select>
       </div>
 
@@ -114,7 +198,9 @@ const Compiler3 = ({ problemId }) => {
       <div className="border p-3 bg-light" style={{ minHeight: '100px' }}>
         <pre>{output}</pre>
       </div>
+      <ToastContainer />
     </div>
+    
   );
 };
 

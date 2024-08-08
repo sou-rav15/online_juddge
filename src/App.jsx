@@ -21,8 +21,8 @@ import AddProblemPage from './components/Adding/AddQuestion.jsx'
 import ProfilePage from './components/pages/Profile.jsx'
 import UpdateProblemPage from './components/Adding/UpdateProblem.jsx'
 import AddTestCase from './components/Adding/AddTestcase.jsx'
+import ForgotPassword from './components/forgotPassword/ForgotPassword.jsx'
 function App() {
-
 
 
 
@@ -31,6 +31,9 @@ function App() {
   const [problems, setProblems] = useState([]);
   // const [userId, setuserId]= useState('')
   const [selectedProblem, setSelectedProblem] = useState(null);
+  // const apiUrl = process.env.REACT_APP_API_URL;
+  const apiUrl = import.meta.env.VITE_API_URL;
+
 
 
 //   useEffect(() => {
@@ -79,7 +82,12 @@ function App() {
 
   useEffect(() => {
     async function fetchProblems() {
-      const response = await fetch('http://localhost:8000/Problems');
+      const headers={
+        headers:{
+          'Authorization':localStorage.getItem('token')
+        }
+      }
+      const response = await fetch(`${apiUrl}/Problems`,headers);
       const data = await response.json();
       setProblems(data);
     }
@@ -104,6 +112,7 @@ function App() {
         <Route path='/Login' element={<Login />} />
         <Route path='*' element={<ErrorPage />} />
         <Route path='/Signup' element={<SignupPage />} />
+        <Route path='/ForgotPassword' element={<ForgotPassword />} />
 
 
         <Route path='/Compiler' element={IsAuthenticated ? <Compiler1 /> : <Login />} />

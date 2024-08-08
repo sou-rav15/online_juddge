@@ -26,13 +26,14 @@ navigate('/Login');
           "If you’re trying, why not do it with CodeHub.com? 
         </blockquote>
         <div class="h-100 d-flex align-items-center justify-content-center">
-          <button onClick={handleButton} class='btn btn-primary'>Let's go yaar</button>
+          <button onClick={handleButton} class='btn btn-primary'>Get Started</button>
         </div>
       </section>
 
       {/* Footer */}
       <footer className="footer">
         <p>&copy; 2024 codeHub.com. All rights reserved.</p>
+        <p> Made By Sourav Saran.</p>
       </footer>
     </div>
   );

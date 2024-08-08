@@ -5,8 +5,8 @@ import { ToastContainer} from 'react-toastify';
 import { HandleError, HandleSuccess } from '../../utils';
 
 function Login() {
-
-  const [LoginInfo, setLoginInfo] = useState({
+  const apiUrl = import.meta.env.VITE_API_URL;
+    const [LoginInfo, setLoginInfo] = useState({
   
     email: '',
     password: '',
@@ -34,7 +34,7 @@ const navigate= useNavigate();
     }    
 
     try {
-      const url = "http://localhost:8000/login";
+      const url = `${apiUrl}/login`;
       // console.log('connectinf to backend');
       const response = await fetch(url, {
         method: "POST",
@@ -78,15 +78,15 @@ else if(!success){
     <div>
 <div className='formContainer'>
   <div className='formshadow'>
-  <h1>Login page</h1>
+  <h1>Login</h1>
 
 <form onSubmit={handleLogin}>
-  <div className='formBox' class="mb-3">
-<label for="name" class="form-label">EMAIL  </label>
+  <div className='formBox mb-3' class="mb-3">
+<label htmlFor="name" className="form-label">EMAIL  </label>
 <input onChange={handleChange} type="email"  className="form-control" name="email" placeholder="Enter Your Email"/>
 </div>
-<div class="mb-3">
-<label for="password" class="form-label">PASSWORD</label>
+<div className="mb-3">
+<label htmlFor="password" className="form-label">PASSWORD</label>
 <input onChange={handleChange} type="password"  className="form-control" name="password" placeholder="Enter Your Password"/>
 </div>
 <div>
@@ -94,9 +94,17 @@ else if(!success){
               <NavLink style={{ textDecoration: 'none', listStyle: 'none' }} to={'/Signup'}> signup</NavLink>
             </span>
 </div>
-<div class="col-12">
-    <button className='buttons'type="submit" class="btn btn-primary mt-2 mb-4">Sign in</button>
+
+<div className="col-12">
+    <button className='buttons'type="submit" class="btn btn-primary mt-2 mb-2">Sign in</button>
   </div>
+  <div className='mb-3' >
+  <span>
+   
+    <NavLink style={{ textDecoration: 'none', listStyle: 'none' }} to={'/ForgotPassword'}> Forgot Password?</NavLink>
+  </span>
+</div>
+
 </form>
 <ToastContainer/>
 

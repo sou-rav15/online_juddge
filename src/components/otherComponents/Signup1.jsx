@@ -10,6 +10,7 @@ import { ToastContainer} from 'react-toastify';
 import { HandleError, HandleSuccess } from '../../utils';
 
 const SignupPage = () => {
+  const apiUrl = import.meta.env.VITE_API_URL;
     const [signupInfo, setsignupInfo] = useState({
         name: '',
         age: '',
@@ -37,7 +38,7 @@ const SignupPage = () => {
         }    
     
         try {
-          const url = "http://localhost:8000/signup";
+          const url = `${apiUrl}/signup`;
           console.log('connectinf to backend');
           const response = await fetch(url, {
             method: "POST",

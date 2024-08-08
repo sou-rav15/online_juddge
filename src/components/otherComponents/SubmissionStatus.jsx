@@ -1,6 +1,7 @@
 const handleProblemSubmission = async (problemId, submissionStatus) => {
     const userId = localStorage.getItem('userId');
-    if (!userId) {
+    const apiUrl = import.meta.env.VITE_API_URL;
+        if (!userId) {
         console.error('User ID is missing from local storage');
         return;
     }
@@ -8,9 +9,14 @@ const handleProblemSubmission = async (problemId, submissionStatus) => {
     // console.log('problem id->',problemId);
     
 // console.log('status is->..', submissionStatus);
+const headers={
+    headers:{
+      'Authorization':localStorage.getItem('token')
+    }
+  }
     let problemTitle = '';
     try {
-        const response = await fetch(`http://localhost:8000/Problems/${problemId}`);
+        const response = await fetch(`${apiUrl}/Problems/${problemId}`,headers);
         
         // Check if response is okay
         if (!response.ok) {
@@ -39,7 +45,7 @@ const handleProblemSubmission = async (problemId, submissionStatus) => {
     };
 
     try {
-        const response = await fetch(`http://localhost:8000/Profile/${userId}/submit`, {
+        const response = await fetch(`${apiUrl}/Profile/${userId}/submit`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

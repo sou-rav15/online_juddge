@@ -6,7 +6,7 @@ const AddTestCase = () => {
   const [output, setOutput] = useState('');
   const { id } = useParams();
   // console.log('id->',id);
-  
+  const apiUrl = import.meta.env.VITE_API_URL;
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -20,7 +20,7 @@ const AddTestCase = () => {
 // console.log('testcases',testCaseData);
 
     try {
-      const response = await fetch(`http://localhost:8000/Testcases/${id}`, {
+      const response = await fetch(`${apiUrl}/Testcases/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

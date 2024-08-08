@@ -3,12 +3,49 @@ import { HandleError } from '../../utils';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Compiler1= () => {
+  const defaultCodeSnippets = {
+    cpp: `#include <iostream>
+  using namespace std;
+  
+  int main() {
+      // Your code here
+      return 0;
+  }`,
+    py: `def main():
+      # Your code here
+      pass
+  
+  if __name__ == "__main__":
+      main()`,
+    js: `function main() {
+      // Your code here
+  }
+  
+  main();`,
+    java: `public class Main {
+      public static void main(String[] args) {
+          // Your code here
+      }
+    }`,
+  };
+
+
   const [language, setLanguage] = useState('javascript');
   const [code, setCode] = useState('');
   const [input, setInput] = useState(''); // Added input state
   const [output, setOutput] = useState('');
+  const apiUrl = import.meta.env.VITE_API_URL;
 
-  const runCode = async (e) => {
+  const handleLanguageChange = (e) => {
+    const selectedLanguage = e.target.value;
+    setLanguage(selectedLanguage);
+    console.log('language is ->',language);
+    
+    // Set default code based on selected language
+    setCode(defaultCodeSnippets[selectedLanguage] || '');
+  }
+
+    const runCode = async (e) => {
     e.preventDefault();
     // if(language==="Javascript") setLanguage('js');
 // console.log('language is ->',language);
@@ -23,7 +60,7 @@ const Compiler1= () => {
     }
 // console.log("payLoad is->",payLoad)
     try {
-      const url = "http://localhost:8000/run";
+      const url = `${apiUrl}/run`;
       const response = await fetch(url, {
         method: 'POST',
         headers: {
@@ -55,11 +92,11 @@ else{
         <div className="card-body">
           <div className="row mb-3">
             <div className="col-md-4">
-              <select className="form-control" value={language} onChange={(e) => setLanguage(e.target.value)}>
+              <select className="form-control" value={language} onChange={handleLanguageChange}>
                 <option value="js">JavaScript</option>
                 <option value="py">Python</option>
                 <option value="cpp">C++</option>
-                {/* <option value="java">Java</option> */}
+                <option value="java">Java</option>
                 {/* <option value="ruby">Ruby</option> */}
               </select>
             </div>
