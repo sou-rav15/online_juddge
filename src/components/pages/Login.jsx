@@ -28,7 +28,7 @@ const navigate= useNavigate();
  
   const handleLogin = async (e) => {
     e.preventDefault();
-    console.log(apiUrl);
+    console.log('link is ',apiUrl);
     const{email,password,}=LoginInfo;
     // console.log(email||username );
     if( !email||!password){
