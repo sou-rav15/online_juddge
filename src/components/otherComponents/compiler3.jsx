@@ -12,7 +12,8 @@ const Compiler3 = ({ problemId }) => {
   const [input, setInput] = useState('');
   const [output, setOutput] = useState('');
 const userId= localStorage.getItem('userId')
-const apiUrl = import.meta.env.VITE_API_URL;
+// const apiUrl = import.meta.env.VITE_API_URL;
+const apiUrl = 'https://backend.codehub.org.in';
 // code fethcing
 
 useEffect(() => {

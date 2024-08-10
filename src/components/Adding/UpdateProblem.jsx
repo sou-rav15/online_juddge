@@ -173,7 +173,8 @@ import { ToastContainer } from 'react-toastify';
 // import Problems from '../../../../backend/models/Problems';
 
 function UpdateProblemPage() {
-    const apiUrl = import.meta.env.VITE_API_URL;
+    // const apiUrl = import.meta.env.VITE_API_URL;
+    const apiUrl = 'https://backend.codehub.org.in';
     const { id } = useParams();
     const navigate = useNavigate();
 

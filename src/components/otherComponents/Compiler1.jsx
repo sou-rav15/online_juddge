@@ -34,7 +34,8 @@ const Compiler1= () => {
   const [code, setCode] = useState('');
   const [input, setInput] = useState(''); // Added input state
   const [output, setOutput] = useState('');
-  const apiUrl = import.meta.env.VITE_API_URL;
+  // const apiUrl = import.meta.env.VITE_API_URL;
+  const apiUrl = 'https://backend.codehub.org.in';
 
   const handleLanguageChange = (e) => {
     const selectedLanguage = e.target.value;

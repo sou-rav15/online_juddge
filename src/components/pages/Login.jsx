@@ -28,7 +28,7 @@ const navigate= useNavigate();
  
   const handleLogin = async (e) => {
     e.preventDefault();
-    console.log('link is ',apiUrl);
+    console.log('link is changed',apiUrl);
     const{email,password,}=LoginInfo;
     // console.log(email||username );
     if( !email||!password){

@@ -8,7 +8,8 @@ const ForgotPassword = () => {
     const [newPassword, setNewPassword] = useState('');
     const [error, setError] = useState('');
     const [message, setMessage] = useState('');
-    const apiUrl = import.meta.env.VITE_API_URL;
+    // const apiUrl = import.meta.env.VITE_API_URL;
+    const apiUrl = 'https://backend.codehub.org.in';
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
