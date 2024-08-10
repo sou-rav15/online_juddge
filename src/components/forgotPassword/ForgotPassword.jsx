@@ -12,7 +12,7 @@ const ForgotPassword = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-           const response= await axios.post(`http://localhost:3000/forgotPassword`, { email, newPassword });
+           const response= await axios.post(`${apiUrl}/forgotPassword`, { email, newPassword });
             setMessage('Password has been updated successfully.');
             setError('');
         } catch (err) {
