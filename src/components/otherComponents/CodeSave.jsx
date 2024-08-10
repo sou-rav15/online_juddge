@@ -1,10 +1,11 @@
 const saveCodeToBackend = async (problemId, code) => {
 console.log('problemId isdsss ->',problemId)
     const userId= localStorage.getItem('userId');
-    console.log('hey im in code save',problemId);
+    const apiUrl = import.meta.env.VITE_API_URL;
+    // console.log('hey im in code save',problemId);
     
     try {
-      const saveUrl = "http://localhost:3000/codeSave";
+      const saveUrl = `${apiUrl}/codeSave`;
       const savePayload = {
         problem_id: problemId,
         userId, // Replace with the actual userId
