@@ -72,7 +72,7 @@ useEffect(() => {
       console.log('result output',result.output);
       // console.log(' error',result.error.stderr)
       if(result.output){// this part is changed
-        console.log('here');
+        // console.log('here');
         
         setOutput(result.output);
       }

@@ -147,6 +147,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
+import { HandleError } from '../../utils';
+import { ToastContainer} from 'react-toastify';
 
 const AddProblemPage = () => {
     const apiUrl = import.meta.env.VITE_API_URL;
@@ -184,11 +186,22 @@ const AddProblemPage = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post(`${apiUrl}/Problems`, {
+            const response = await axios.post(`${apiUrl}/Problems`, 
+                {
                 ...problem,
                 tags: problem.tags.split(',').map(tag => tag.trim()),
                 constraints: problem.constraints.split('\n').map(constraint => constraint.trim())
-            });
+            },
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'accessKey':localStorage.getItem('key')
+                    // Add any other headers you need
+                }
+            }
+        );
+
+        console.log('response',response)
             console.log('Problem added:', response.data);
             // Clear the form
             setProblem({
@@ -202,7 +215,9 @@ const AddProblemPage = () => {
                 examples: [{ input: '', output: '', explanation: '' }]
             });
         } catch (error) {
+            console.log('response',error.response.data.message);
             console.error('Error adding problem:', error);
+            HandleError(error.response.data.message);
         }
     };
 
@@ -333,6 +348,7 @@ const AddProblemPage = () => {
                 <Button className='ms-5 mt-3' variant="primary " type="submit">
                     Add Problem
                 </Button>
+                <ToastContainer/>
             </Form>
         </Container>
     );

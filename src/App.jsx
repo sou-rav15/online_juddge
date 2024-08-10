@@ -22,6 +22,7 @@ import ProfilePage from './components/pages/Profile.jsx'
 import UpdateProblemPage from './components/Adding/UpdateProblem.jsx'
 import AddTestCase from './components/Adding/AddTestcase.jsx'
 import ForgotPassword from './components/forgotPassword/ForgotPassword.jsx'
+import Admin from './components/otherComponents/Admin.jsx'
 function App() {
 
 
@@ -115,6 +116,7 @@ function App() {
         <Route path='/ForgotPassword' element={<ForgotPassword />} />
 
 
+        <Route path='/Admin' element={IsAuthenticated ? <Admin /> : <Login />} />
         <Route path='/Compiler' element={IsAuthenticated ? <Compiler1 /> : <Login />} />
         <Route path='/AddProblems' element={IsAuthenticated ? < AddProblemPage /> : < Home />} />
         <Route path='/Mainpage' element={IsAuthenticated ? <MainPage /> : <Login />} />

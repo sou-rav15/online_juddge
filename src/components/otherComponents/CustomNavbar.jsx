@@ -18,6 +18,7 @@ const CustomNavbar = () => {
         localStorage.removeItem('loggedInUser');
         localStorage.removeItem('username');
         localStorage.removeItem('userId');
+        localStorage.removeItem('key');
         HandleSuccess("Log out succesfully");
         setTimeout(() => {
             navigate('/');
@@ -46,6 +47,7 @@ const CustomNavbar = () => {
                     <Nav className="mr-auto navbar-nav ms-auto mb-2 mb-lg-0 ">
                         {isAuthenticated ? (
                             <>
+                                <Nav.Link as={Link} to="/Admin">Admin</Nav.Link>
                                 <Nav.Link as={Link} to="/AddProblems">AddProblems</Nav.Link>
                                 <Nav.Link as={Link} to="/Problems">Problems</Nav.Link>
                                 <Nav.Link as={Link} to="/compiler">Compiler</Nav.Link>

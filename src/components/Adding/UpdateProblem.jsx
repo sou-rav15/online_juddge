@@ -229,7 +229,8 @@ function UpdateProblemPage() {
             const response = await fetch(`${apiUrl}/problems/${id}`, {
                 method: 'PUT',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'accessKey':localStorage.getItem('key')
                 },
                 body: JSON.stringify(problem)
             });
