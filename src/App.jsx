@@ -34,7 +34,7 @@ function App() {
   const [selectedProblem, setSelectedProblem] = useState(null);
   // const apiUrl = process.env.REACT_APP_API_URL;
   // const apiUrl = import.meta.env.VITE_API_URL;
-  const apiUrl = 'https://backend.codehub.org.in';
+  const apiUrl = 'https://bcknd.codehub.org.in';
 
 
 
