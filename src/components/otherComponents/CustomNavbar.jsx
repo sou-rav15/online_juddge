@@ -19,10 +19,9 @@ const CustomNavbar = () => {
         localStorage.removeItem('username');
         localStorage.removeItem('userId');
         localStorage.removeItem('key');
-        // HandleSuccess("Log out succesfully");
+        HandleSuccess("Log out succesfully");
         
         setTimeout(() => {
-            HandleSuccess("Log out succesfully");
 
             navigate('/');
         })
