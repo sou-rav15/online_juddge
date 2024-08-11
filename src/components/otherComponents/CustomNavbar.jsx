@@ -22,7 +22,7 @@ const CustomNavbar = () => {
         HandleSuccess("Log out succesfully");
         setTimeout(() => {
             navigate('/');
-        })
+        },1000)
     }
     useEffect(() => {
         if (localStorage.getItem('token')) {
