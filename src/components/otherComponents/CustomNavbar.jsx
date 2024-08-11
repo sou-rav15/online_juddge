@@ -20,7 +20,7 @@ const CustomNavbar = () => {
         localStorage.removeItem('userId');
         localStorage.removeItem('key');
         HandleSuccess("Log out succesfully");
-        await Wait(500)
+        
         setTimeout(() => {
             navigate('/');
         },500)
