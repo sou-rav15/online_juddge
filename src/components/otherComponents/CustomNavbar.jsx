@@ -13,7 +13,7 @@ import { HandleSuccess } from '../../utils';
 const CustomNavbar = () => {
     const navigate = useNavigate();
     const [isAuthenticated, setisAuthenticated] = useState(false);
-    const onLogout = async(e) => {
+    const onLogout = (e) => {
         localStorage.removeItem('token');
         localStorage.removeItem('loggedInUser');
         localStorage.removeItem('username');
@@ -23,7 +23,7 @@ const CustomNavbar = () => {
         
         setTimeout(() => {
             navigate('/');
-        },500)
+        })
     }
     useEffect(() => {
         if (localStorage.getItem('token')) {
