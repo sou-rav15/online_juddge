@@ -13,16 +13,17 @@ import { HandleSuccess } from '../../utils';
 const CustomNavbar = () => {
     const navigate = useNavigate();
     const [isAuthenticated, setisAuthenticated] = useState(false);
-    const onLogout = (e) => {
+    const onLogout = async(e) => {
         localStorage.removeItem('token');
         localStorage.removeItem('loggedInUser');
         localStorage.removeItem('username');
         localStorage.removeItem('userId');
         localStorage.removeItem('key');
         HandleSuccess("Log out succesfully");
+        await Wait(500)
         setTimeout(() => {
             navigate('/');
-        },1000)
+        },500)
     }
     useEffect(() => {
         if (localStorage.getItem('token')) {
