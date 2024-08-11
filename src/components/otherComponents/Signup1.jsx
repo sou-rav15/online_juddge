@@ -11,7 +11,7 @@ import { HandleError, HandleSuccess } from '../../utils';
 
 const SignupPage = () => {
   // const apiUrl = import.meta.env.VITE_API_URL;
-  const apiUrl = 'https://backend.codehub.org.in';
+  const apiUrl = 'https://bcknd.codehub.org.in';
     const [signupInfo, setsignupInfo] = useState({
         name: '',
         age: '',

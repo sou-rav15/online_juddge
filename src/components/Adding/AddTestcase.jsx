@@ -9,7 +9,7 @@ const AddTestCase = () => {
   const { id } = useParams();
   // console.log('id->',id);
   // const apiUrl = import.meta.env.VITE_API_URL;
-  const apiUrl = 'https://backend.codehub.org.in';
+  const apiUrl = 'https://bcknd.codehub.org.in';
   const handleSubmit = async (e) => {
     e.preventDefault();
 

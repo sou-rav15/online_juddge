@@ -2,7 +2,7 @@ const saveCodeToBackend = async (problemId, code) => {
 console.log('problemId isdsss ->',problemId)
     const userId= localStorage.getItem('userId');
     // const apiUrl = import.meta.env.VITE_API_URL;
-    const apiUrl = 'https://backend.codehub.org.in';
+    const apiUrl = 'https://bcknd.codehub.org.in';
     // console.log('hey im in code save',problemId);
     
     try {

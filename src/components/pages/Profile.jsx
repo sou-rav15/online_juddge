@@ -89,7 +89,7 @@ import 'react-toastify/dist/ReactToastify.css'; // Ensure you include this CSS
 
 const ProfilePage = () => {
   // const apiUrl = import.meta.env.VITE_API_URL;
-  const apiUrl = 'https://backend.codehub.org.in';
+  const apiUrl = 'https://bcknd.codehub.org.in';
   const [profile, setProfile] = useState(null);
   const userId = localStorage.getItem('userId');
 
