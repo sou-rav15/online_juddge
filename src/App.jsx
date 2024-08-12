@@ -119,6 +119,7 @@ function App() {
 
         <Route path='/Admin' element={IsAuthenticated ? <Admin /> : <Login />} />
         <Route path='/Compiler' element={IsAuthenticated ? <Compiler1 /> : <Login />} />
+     
         <Route path='/AddProblems' element={IsAuthenticated ? < AddProblemPage /> : < Home />} />
         <Route path='/Mainpage' element={IsAuthenticated ? <MainPage /> : <Login />} />
         <Route path='/Profile' element={IsAuthenticated ? <ProfilePage  /> : <Login />} />

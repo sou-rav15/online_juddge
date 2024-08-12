@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { HandleError } from '../../utils';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import MonacoEditor from '@monaco-editor/react';
+import './Compiler.css'
 const Compiler1= () => {
   const defaultCodeSnippets = {
     cpp: `#include <iostream>
@@ -103,14 +104,17 @@ else{
             </div>
           </div>
           <div className="row mb-3">
-            <div className="col-md-8">
-              <textarea
-                className="form-control"
-                rows="10"
+          <div className="col-md-8  editor-container">
+              <MonacoEditor
+                height="400px"
+                language={language}
                 value={code}
-                onChange={(e) => setCode(e.target.value)}
-                placeholder="Write your code here..."
-              ></textarea>
+                options={{
+                  selectOnLineNumbers: true,
+                  automaticLayout: true, fontSize: 14
+                }}
+                onChange={(value) => setCode(value)}
+              />
             </div>
             <div className="col-md-4">
               <textarea
