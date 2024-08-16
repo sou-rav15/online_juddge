@@ -11,6 +11,12 @@ import { HandleSuccess } from '../../utils';
 // }
 // { isAuthenticated, onLogout }
 const CustomNavbar = () => {
+    const fontStyle={
+        fontFamily: "Kanit, sans-serif",
+        fontWeight: 700,
+       
+    }
+
     const navigate = useNavigate();
     const [isAuthenticated, setisAuthenticated] = useState(false);
     const onLogout = (e) => {
@@ -41,7 +47,7 @@ const CustomNavbar = () => {
     return (
         <Navbar bg="dark" variant="dark" expand="lg">
             <Container>
-                <Navbar.Brand  > &lt;/&gt; 
+                <Navbar.Brand style ={fontStyle} > &lt;/&gt; 
                      {/* as={Link} to="/"  */}
                     CodeHub.com</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
