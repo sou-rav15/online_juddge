@@ -4,7 +4,7 @@ import { HandleError } from '../../utils';
 import handleProblemSubmission from './SubmissionStatus';
 import saveCodeToBackend from './CodeSave';
 import { ToastContainer} from 'react-toastify';
-
+import MonacoEditor from '@monaco-editor/react';
 
 const Compiler3 = ({ problemId }) => {
 
