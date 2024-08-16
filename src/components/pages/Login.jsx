@@ -98,7 +98,7 @@ else if(!success){
 </div>
 
 <div className="col-12">
-    <button className='buttons'type="submit" class="btn btn-primary mt-2 mb-2">Sign in</button>
+    <button type="submit" className=" mt-2 mb-2  buttons">Sign in</button>
   </div>
   <div className='mb-3' >
   <span>

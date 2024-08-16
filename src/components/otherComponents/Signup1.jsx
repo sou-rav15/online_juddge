@@ -151,9 +151,9 @@ const SignupPage = () => {
             </span>
           </div> */}
 
-                <Button variant="primary" type="submit" className="w-100">
+                <button  type="submit" className="w-100 buttons">
                     Sign Up
-                </Button>
+                </button>
 
                 {/* {error && <Alert variant="danger" className="mt-3">{error}</Alert>}
                 {success && <Alert variant="success" className="mt-3">{success}</Alert>} */}
