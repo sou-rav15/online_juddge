@@ -26,7 +26,7 @@ navigate('/Login');
           "If you’re trying, why not do it with CodeHub.com? 
         </blockquote>
         <div class="h-100 d-flex align-items-center justify-content-center">
-          <button onClick={handleButton} class='btn btn-primary'>Get Started</button>
+          <button onClick={handleButton} class='home-buttons'>Get Started</button>
         </div>
       </section>
 
