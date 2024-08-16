@@ -7,6 +7,14 @@ import { ToastContainer} from 'react-toastify';
 
 
 const Compiler3 = ({ problemId }) => {
+
+  const languageMapping = {
+    cpp: 'cpp',
+    js: 'javascript',
+    py: 'python',
+    java: 'java'
+  };
+
   const [language, setLanguage] = useState('cpp');
   const [code, setCode] = useState('');
   const [input, setInput] = useState('');
@@ -165,13 +173,19 @@ else{
 
       {/* Code Editor */}
       <div className="mb-2">
-        <textarea
-          className="form-control"
-          rows="10"
-          value={code}
-          onChange={(e) => setCode(e.target.value)}
-          placeholder="Write your code here..."
-        ></textarea>
+      <MonacoEditor
+                height="400px"
+                language={languageMapping[language]} // Use mapped value
+                value={code}
+                theme="myCustomTheme"
+                options={{
+                  selectOnLineNumbers: true,
+                  automaticLayout: true,
+                  autoClosingBrackets: 'always',
+                  fontSize: 14
+                }}
+                onChange={(value) => setCode(value)}
+              />
       </div>
 
       {/* Input Area */}
@@ -187,7 +201,7 @@ else{
 
       {/* Buttons */}
       <div className="mb-2 d-flex justify-content-between">
-        <button className="btn btn-success me-2" onClick={handleRunCode}>
+        <button className="me-2 custom-button" onClick={handleRunCode}>
           Run Code
         </button>
         <button className="btn btn-primary" onClick={handleSubmitCode}>
