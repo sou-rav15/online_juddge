@@ -38,7 +38,7 @@ const Compiler1= () => {
   };
 
 
-  const [language, setLanguage] = useState('javascript');
+  const [language, setLanguage] = useState('cpp');
   const [code, setCode] = useState('');
   const [input, setInput] = useState(''); // Added input state
   const [output, setOutput] = useState('');
