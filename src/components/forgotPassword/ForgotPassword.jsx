@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Container, Form, Button, Alert } from 'react-bootstrap';
-
+import './ForgotPassword.css'
 const ForgotPassword = () => {
     const [email, setEmail] = useState('');
     const [newPassword, setNewPassword] = useState('');
@@ -47,7 +47,7 @@ const ForgotPassword = () => {
                         required
                     />
                 </Form.Group>
-                <Button variant="primary" type="submit">Reset Password</Button>
+                <button className='forgot-button' type="submit">Reset Password</button>
             </Form>
             {message && <Alert variant="success" className="mt-3">{message}</Alert>}
             {error && <Alert variant="danger" className="mt-3">{error}</Alert>}
