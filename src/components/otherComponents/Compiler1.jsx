@@ -4,6 +4,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import MonacoEditor from '@monaco-editor/react';
 import './Compiler.css'
 const Compiler1= () => {
+  const languageMapping = {
+    cpp: 'cpp',
+    js: 'javascript',
+    py: 'python',
+    java: 'java'
+  };
+
   const defaultCodeSnippets = {
     cpp: `#include <iostream>
   using namespace std;
@@ -41,12 +48,12 @@ const Compiler1= () => {
   const handleLanguageChange = (e) => {
     const selectedLanguage = e.target.value;
     setLanguage(selectedLanguage);
-    console.log('language is ->',language);
     
-    // Set default code based on selected language
-    setCode(defaultCodeSnippets[selectedLanguage] || '');
   }
-
+  useEffect(() => {
+    // Update the code with the default snippet for the selected language
+    setCode(defaultCodeSnippets[language]);
+  }, [language]);
     const runCode = async (e) => {
     e.preventDefault();
     // if(language==="Javascript") setLanguage('js');
@@ -107,7 +114,7 @@ else{
           <div className="col-md-8  editor-container">
               <MonacoEditor
                 height="400px"
-                language={language}
+                language={languageMapping[language]}
                 value={code}
                 options={{
                   selectOnLineNumbers: true,
@@ -128,7 +135,7 @@ else{
           </div>
           <div className="row mb-3">
             <div className="col-md-12 text-center">
-              <button className="btn btn-success" onClick={runCode}>
+              <button className="custom-button" onClick={runCode}>
                 Run Code
               </button>
             </div>

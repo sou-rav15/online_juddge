@@ -80,7 +80,7 @@ else if(!success){
     <div>
 <div className='formContainer'>
   <div className='formshadow'>
-  <h1>Login</h1>
+  <h1>Log In</h1>
 
 <form onSubmit={handleLogin}>
   <div className='formBox mb-3' class="mb-3">

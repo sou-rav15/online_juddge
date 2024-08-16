@@ -52,4 +52,27 @@ h1 {
     background-color: #f1f1f1;
     /* background-color: red; */
   }
-  
+  .custom-button {
+    background-color: #000; /* Black background */
+  color: #fff; /* White text color */
+  border: none; /* Remove default border */
+  border-radius: 4px; /* Rounded corners */
+  padding: 10px 20px; /* Padding inside the button */
+  font-size: 16px; /* Font size */
+  font-family: Arial, sans-serif; /* Font family */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: all 0.5s ease
+  }
+  .custom-button:hover{
+    background-color: #000;
+    transform: scale(1.05);
+  }
+
+ .custom-button:active {
+   
+    background-color: hsl(0deg 0% 48%);
+    color: hsl(0, 0%, 100%);
+    box-shadow: rgb(0 0 0) 0px 0px 0px 0px;
+    transform: translateY(5px);
+    transition: 100ms;
+  }
