@@ -22,7 +22,8 @@ html, body {
   
   .header {
     padding: 50px 20px;
-    background-color: #f4f4f4;
+    /* background-color: #f4f4f4; */
+    font-family: 'Nunito', sans-serif;
   }
   
   .header h1 {
