@@ -174,7 +174,15 @@ const [timerActive, setTimerActive] = useState(false);
 const apiUrl='https://bcknd.codehub.org.in'
   useEffect(() => {
     async function fetchProblems() {
-      const response = await fetch(apiUrl);
+      const headers={
+                headers:{
+                  'Authorization':localStorage.getItem('token')
+                }
+              }
+              const response = await fetch(`${apiUrl}/Problems`,headers);
+              // const data = await response.json();
+              // setProblems(data);
+      // const response = await fetch(apiUrl);
       const data = await response.json();
       setProblems(data);
     }

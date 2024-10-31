@@ -14,7 +14,8 @@ import Timer from '../otherComponents/Timer/Timer';
 Chart.register(...registerables);
 
 const ProfilePage = () => {
-  const apiUrl = 'http://localhost:8000';
+  // const apiUrl = 'http://localhost:8000';
+  const apiUrl = 'https://bcknd.codehub.org.in';
   const [profile, setProfile] = useState(null);
   const [loading, setLoading] = useState(true); // State for loading
   const userId = localStorage.getItem('userId');
