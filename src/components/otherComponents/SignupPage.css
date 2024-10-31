@@ -1,45 +1,195 @@
-/* SignupPage.css */
-
-.form-container {
-    max-width: 500px; /* Set a maximum width for the form */
-    margin: auto; /* Center the form */
+/* Container styles to center the form and add margins */
+.parent-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px; /* Padding for mobile responsiveness */
+    background-color: #f8f9fa; /* Light background color */
 }
 
+/* Adding a shadow to the form container */
+.form-shadow {
+    background-color: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); /* Light shadow */
+    max-width: 500px; /* Limit the form width */
+    width: 100%;
+    margin-top: 20px; /* Add some margin from the top */
+    margin-bottom: 20px; /* Add some margin from the bottom */
+}
+
+/* Font style for the heading */
+.fontStyles {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #343a40;
+}
+
+/* Style for form fields */
 .input-field {
-    max-width: 100%; /* Ensure input fields do not exceed the container width */
-    margin-bottom: 1rem; /* Add space between fields */
+    border-radius: 5px;
+    margin-bottom: 15px;
+    padding: 10px;
 }
 
-/* Responsive adjustments */
+/* Button styles */
+.buttons {
+    width: 100%;
+    background-color: #873ee7; 
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.buttons:hover {
+    background-color:#7a24eac0; 
+}
+
+/* Checkbox alignment */
+.checkbuttons {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+}
+
+/* Checkbox input style */
+.inputcheck {
+    margin-right: 10px;
+}
+
+/* Styling for the terms and conditions link */
+.btn-link {
+    padding: 0;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.btn-link:hover {
+    text-decoration: underline;
+}
+
+/* Ensure the text is centered */
+.text-center {
+    text-align: center;
+}
+
+/* Dark Theme Styles */
+.dark-theme {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+.dark-theme .parent-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #121212;
+}
+
+.dark-theme .form-shadow {
+    background-color: #1e1e1e;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.dark-theme .fontStyles {
+    color: #e0e0e0;
+}
+
+.dark-theme .form-container {
+    color: #e0e0e0;
+}
+
+.dark-theme .form-label {
+    color: #e0e0e0;
+}
+
+.dark-theme .input-field {
+    background-color: #333;
+    border: 1px solid #444;
+    color: #e0e0e0;
+    border-radius: 4px;
+}
+
+.dark-theme .input-field::placeholder {
+    color: #999;
+}
+
+.dark-theme .buttons {
+    background-color: #120425; 
+    color: rgb(133, 133, 133);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.dark-theme .buttons:hover {
+    background-color: #0f031fcb;
+    color: rgb(90, 90, 90);
+}
+
+.dark-theme .checkbuttons label {
+    color: #e0e0e0;
+}
+
+.dark-theme .form-check-input {
+    background-color: #444;
+    border-color: #666;
+}
+
+.dark-theme .btn-link {
+     
+    color: #414141;
+    transition: color 0.3s ease;
+}
+
+.dark-theme .btn-link:hover {
+    color: #333333d6;
+}
+
+.dark-theme.mt-0 p {
+    color: #e0e0e0;
+}
+
+.dark-theme input[type="radio"] {
+    accent-color: #bb86fc;
+}
+
+/* For Toastify notifications */
+.dark-theme .Toastify__toast--success {
+    background-color: #333;
+    color: #bb86fc;
+}
+
+.dark-theme .Toastify__toast--error {
+    background-color: #333;
+    color: #cf6679;
+}
+
+
 @media (max-width: 576px) {
-    .input-field {
-        font-size: 0.875rem; /* Smaller font size for smaller screens */
+    /* Make form container smaller on small screens */
+    .form-shadow {
+        padding: 20px;
+        margin-top: 10px;
+        margin-bottom: 10px;
     }
-}
 
-.buttons{
-    background-color:#000 ; 
-    color: #fff; 
-    border: none; 
-    border-radius: 4px; 
-    padding: 10px 22px; 
-    font-size: 16px; 
-    font-family: Arial, sans-serif; 
-    cursor: pointer; 
-    transition: all 0.5s ease
-  }
-  .buttons:hover{
-   transform: scale(1.01);
-  background-color: black;
- 
+    /* Adjust button and font sizes for mobile */
+    .buttons {
+        font-size: 14px;
+    }
 
-  }
-
-.buttons:active{
-    letter-spacing: 3px;
-    background-color: hsl(0deg 0% 48%);
-    color: hsl(0, 0%, 100%);
-    box-shadow: rgb(0 0 0) 0px 0px 0px 0px;
-    transform: translateY(5px);
-    transition: 100ms;
+    .fontStyles {
+        font-size: 24px;
+    }
 }

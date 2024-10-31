@@ -6,6 +6,9 @@ body{
     font-weight: 400;
     font-style: normal;    
 }
+.custom-z-index {
+  z-index: 1;
+}
 
 /* Styling for the list item container */
 .list-group-item {
@@ -14,7 +17,10 @@ body{
     padding: 10px;
     margin-bottom: 10px;
   }
-  
+.problem-title {
+    color: var(--title-text-color); /* Use the variable for text color */
+    font-weight: bold; /* Optional: Make the title bold */
+}
   .custom-buttons {
     background-color: #7d2ae8; /* Custom background color */
     color: white; /* Text color */
@@ -27,6 +33,50 @@ body{
     background-color: #7d2ae8;
     transform: scale(1.01);
   }
+  .dark-theme .list-group-item{
+    background-color: var(--list-bg-color);
+    border: 1px solid var(--list-border-color);
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-shadow: var(--list-box-shadow);
+    transition: background-color 0.3s, border 0.3s, box-shadow 0.3s; /* Smooth transition */
+}
+
+.dark-theme .custom-buttons {
+  background-color: #212427; /* Use the background color variable */
+  color: rgba(163, 160, 160, 0.751); /* Use the text color variable */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Border radius for a rounded look */
+  padding: 8px 12px; /* Padding inside the button */
+  cursor: pointer; /* Change cursor to pointer on hover */
+  transition: background-color 0.3s, transform 0.2s; /* Smooth transition */
+}
+.dark-theme .custom-buttons:hover{
+  background-color: #212427ba;
+}
+.dark-theme .problem-title {
+  color: rgb(174, 170, 170); /* Use the variable for text color */
+  font-weight: bold; /* Optional: Make the title bold */
+}
+.dark-theme .problem-title:hover{
+  color: rgb(174, 170, 170);
+}
+.dark-theme.custom-buttons:hover {
+  background-color: var(--button-hover-bg-color); /* Hover effect with a different color */
+  transform: scale(1.01); /* Slight zoom effect on hover */
+}
+h3{
+  margin-top: 10px;
+}
+.dark-theme h3{
+  color: rgb(199, 195, 195);
+  font-weight: 700;
+}
+  
+  /* .dark-theme .problem-title{
+    color: aqua;
+  } */
   @media (min-width: 576px) {
     .custom-buttons{
       flex: 1; /* Make buttons take up equal width on larger screens */
