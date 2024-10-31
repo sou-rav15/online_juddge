@@ -160,7 +160,7 @@ import ShowContestQuestion from './components/otherComponents/ShowContestQst/Sho
 import Timer from './components/otherComponents/Timer/Timer.jsx';
 import { TimerProvider } from './components/otherComponents/Timer/TimerContext.jsx';
 
-
+import ForgotPassword from './components/forgotPassword/ForgotPassword.jsx'
 
 
 function App() {
@@ -171,10 +171,10 @@ function App() {
 //timer
 const [timeLeft, setTimeLeft] = useState(600); // Set the initial timer (10 minutes)
 const [timerActive, setTimerActive] = useState(false);
-
+const apiUrl='https://bcknd.codehub.org.in'
   useEffect(() => {
     async function fetchProblems() {
-      const response = await fetch('http://localhost:8000/Problems');
+      const response = await fetch(apiUrl);
       const data = await response.json();
       setProblems(data);
     }
@@ -206,6 +206,7 @@ const [timerActive, setTimerActive] = useState(false);
           <Route path='/AddTestCases/:id' element={ <AddTestCase /> } /> 
           <Route path='/Problems/:id' element={<ProblemDetails problems={problems} />}/>
           <Route path='/Profile' element={ <ProfilePage /> } /> 
+          <Route path='/ForgotPassword' element={<ForgotPassword />} />
           {/* show all contests available */}
           {/* <Route path='/contest' element={ <ContestPage  /> } />  */}
           {/* her you can write code for questions */}
