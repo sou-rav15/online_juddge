@@ -88,14 +88,14 @@ import { useAuth } from '../Authentication/Authenticaton.jsx'; // Adjust the pat
 import './CustomNavbar.css';
 import { HandleError, HandleSuccess } from '../../utils.js';
 import { useNotification } from './Notification/Notification.jsx';
-import FestiveTheme from '../FestivalTheme/FestiveTheme.jsx';
 
-const CustomNavbar = ({ timeLeft, timerActive }) => {
+
+const CustomNavbar = () => {
   const { isDark, toggleTheme } = useTheme();
   const { isAuthenticated, logout } = useAuth(); // Use the useAuth hook
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
-  const notify = useNotification();
+//   const notify = useNotification();
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -110,7 +110,7 @@ const CustomNavbar = ({ timeLeft, timerActive }) => {
     logout();
     navigate('/');
   };
-//   const apiUrl = 'https://bcknd.codehub.org.in';
+  const apiUrl = 'https://bcknd.codehub.org.in';
 //   const apiUrl = 'http://localhost:8000';
     const handleAdmin=async () => {
       const userId =localStorage.getItem('userId');
@@ -137,7 +137,7 @@ const CustomNavbar = ({ timeLeft, timerActive }) => {
         // } catch (error) {
             
         // }
-        
+
         console.log('Admin button clicked');
         // Add functionality here, e.g., navigate to a different page or show a modal
     };
