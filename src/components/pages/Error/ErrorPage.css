@@ -1,0 +1,39 @@
+.error-container {
+    color: #343a40; /* Dark gray */
+}
+
+.error-code {
+    font-size: 8rem;
+    font-weight: 700;
+    color: #d9534f; /* Red shade for the error code */
+}
+
+.error-message {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.error-description {
+    font-size: 1rem;
+    color: #6c757d;
+    margin-bottom: 20px;
+}
+
+.error-btn {
+    background-color: #007bff; /* Use the primary theme color */
+    border: none;
+    color: #fff;
+    transition: background-color 0.3s;
+}
+
+.error-btn:hover {
+    background-color: #0056b3;
+}
+
+.error-container {
+    font-family: 'Courier New', Courier, monospace; /* Coding-inspired font */
+    background-color: #f8f9fa;
+    padding: 3rem;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+}
