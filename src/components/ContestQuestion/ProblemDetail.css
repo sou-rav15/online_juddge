@@ -1,0 +1,119 @@
+/* Dark theme styles */
+.dark {
+    background-color: #121212; /* Dark background for the container */
+    color: #eae0e0; /* Light text color */
+  }
+  
+  .dark-theme .card {
+    background-color: #1e1e1e; /* Darker card background */
+    border-color: #444; 
+    
+    /* Darker border for cards */
+  }
+  .dark-theme .card-body{
+    color: #6c757d;
+  }
+  
+  /* .dark-theme p{
+    color: #6c757d;
+  } */
+  .dark-theme .badge.bg-secondary {
+    background-color: #6c757d; /* Change secondary badge color */
+  }
+  
+  .dark-theme .badge.bg-primary {
+    background-color: #007bff; /* Change primary badge color */
+  }
+  
+  .dark-theme .badge.bg-info {
+    background-color: #17a2b8; /* Change info badge color */
+  }
+  
+  .dark-theme h5, .dark p {
+    color: #6c757d; /* Ensure text is white in headings and paragraphs */
+  }
+  .timer {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  .examples strong{
+    color: #1e1e1e;
+  }
+.examples .input, .output{
+  color:#999999;
+}  
+.output{
+  display: flex;
+  
+}
+
+.completion-message-box {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  text-align: center;
+  max-width: 400px;
+}
+
+.message-content p {
+  font-size: 18px;
+  margin-bottom: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.exit-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.exit-button:hover {
+  background-color: #368d3be9;
+}
+.dark-theme .completion-message-box{
+  background-color: #001F3F;
+}
+.dark-theme .exit-button{
+  background-color: #041324;
+  color: #333;
+  font-weight: 700;
+}
+.dark-theme .exit-button:hover{
+  background-color: #01070ebb;
+
+  color: #353232;
+  }
+
+
+
+@media (max-width: 600px) {
+ .completion-message-box{
+  margin-top: 7px;
+  width: 248px;
+ }
+
+ .message-content p {
+  font-size: 12px;
+  margin-bottom: 20px;
+  font-family: Arial, sans-serif;
+}
+.exit-button {
+  padding: 7px 16px;
+  font-size: 12px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+}

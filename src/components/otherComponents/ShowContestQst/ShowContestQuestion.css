@@ -1,0 +1,44 @@
+.contest-container {
+    padding: 20px;
+  }
+  
+  .timer {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 20px; /* Spacing between timer and questions */
+  }
+  
+  .questions-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .question-box {
+    margin-bottom: 15px; /* Spacing between question boxes */
+  }
+  
+  .solve-button {
+    margin-top: 10px; /* Spacing above the solve button */
+  }
+  
+  .back-button{
+    padding: 10px 15px;
+    background-color: #2196F3; /* Blue */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+  }
+  .back-button:hover{
+    background-color: #0a74cbd7;
+  }
+  .dark-theme .back-button{
+    background-color: #041d38;
+    color: #5c5b5b;
+  }
+  .dark-theme .back-button:hover{
+    background-color: #001225d3;
+    color: #919191;
+  }

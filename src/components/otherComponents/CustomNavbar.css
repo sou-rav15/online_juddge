@@ -1,0 +1,171 @@
+
+.custom-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: var(--navbar-bg); /* Theme variable */
+    border-bottom: 2px solid var(--navbar-border); /* Theme-based border */
+  }
+  
+  .navbar-content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+  }
+  
+  
+  .navbar-brand {
+    font-family: "Kanit", sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--brand-color);
+   
+    text-decoration: none;
+  }
+  
+  .logo-text .highlight {
+    color: var(--highlight-color); /* Custom highlight for the brand */
+  }
+  
+  .navbar-links {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .nav-link {
+    font-size: 1rem;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  
+  .nav-link:hover {
+    color: var(--highlight-color); /* Hover highlight effect */
+  }
+  
+  .navbar-controls {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+  }
+  
+  .theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: var(--text-color);
+  }
+  
+  .profile-section {
+    display: flex;
+    align-items: center;
+  }
+  
+  .profile-icon {
+    font-size: 2rem;
+    color: var(--text-color);
+    margin-right: 10px;
+  }
+  
+  .logout-button {
+    border: none;
+    font-size: 1rem;
+    border-radius: 5px;
+    padding: 5px 10px;
+    /* background-color: rgb(155, 100, 166); */
+    background-color: rgb(220, 215, 215);
+    color: rgba(0, 0, 0, 0.806);
+    cursor: pointer;
+  }
+  .dark-theme .logout-button{
+    background-color: rgba(22, 22, 22, 0.792) ; 
+    color: white;
+  }
+  .dark-theme .logout-button:hover{
+    background-color: rgba(40, 39, 39, 0.676) ; 
+    color: rgba(255, 255, 255, 0.751);
+  }
+  .logout-button:hover {
+    background-color: rgba(22, 22, 22, 0.792) ; 
+    color: white;
+    /* Hover effect for logout button */
+  }
+  
+  /* Dark and Light Mode Variables */
+  :root {
+    --navbar-bg: #ffffff;
+    --navbar-border: #ddd;
+    --brand-color: #333;
+    --highlight-color: #7d2ae8;
+    --highlight-hover-color: #6521c2;
+    --text-color: #333;
+  }
+  
+  .dark-theme {
+    --navbar-bg: #2c2c2c;
+    --navbar-border: #444;
+    --brand-color: #ffffff;
+    --highlight-color: #9b4ff7;
+    --highlight-hover-color: #7d2ae8;
+    --text-color: #ffffff;
+  }
+  
+  
+  
+  .nav-link{
+    font-size:12px;
+  }
+  .fontStyle{
+    text-align: left;
+    font-family: "Kanit", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 12px;
+  }
+  
+  
+  .dark-theme {
+    /* background-color: #121212; */
+    background-color: var(--primary-bg-color);
+    color: #e0e0e0;
+  }
+  
+  .dark-theme .nav-link {
+    color: #e0e0e0;
+  }
+  .dark-theme .nav-link :hover{
+    color: #cd9d9d;
+  }
+  
+  .dark-theme .navbar-brand span {
+    color: #90caf9;
+  }
+  
+  .dark-theme .nav-link:hover {
+    color: #7c7a7a;
+  }
+  @media (max-width: 992px) {
+    .dark-theme .offcanvas-body{
+    
+      background-color: #333;
+    
+    }
+    .dark-theme .offcanvas-header {
+      background-color: #333;
+      color: white;
+    
+    }
+    
+  }
+  
+  .timer {
+    font-size: 12px; /* Make the timer text small */
+    margin-left: 20px; /* Add some space to the left */
+    color: #343a40; /* Default text color */
+  }
+  
+  
+  

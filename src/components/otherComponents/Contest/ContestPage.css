@@ -1,0 +1,239 @@
+/* General container for the contest */
+/* ContestPage.css */
+
+.contest-container {
+  padding: 20px;
+  background-color: #f7f9fc;
+  color: #333;
+  font-family: 'Arial', sans-serif;
+  transition: 0.3s;
+}
+.dark-theme .contest-container{
+  background-color:black;
+  color: #FFDDC1;
+}
+.contest-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #4a90e2;
+  font-family: "kanit";
+  font-weight: bold;
+}
+
+.questions-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.question-box {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 30%; /* Adjust width as needed */
+  margin: 10px;
+  padding: 15px;
+  transition: transform 0.2s;
+}
+.dark-theme .question-box{
+  background-color: #121212;
+  border: none;
+}
+
+
+
+.button-container {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+}
+
+.solve-button {
+  padding: 10px 15px;
+  background-color: #4caf50; /* Green */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+
+.solve-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+.solve-button:disabled:hover{
+  background-color: #ccc;
+}
+.solve-button:hover:not(:disabled) {
+  background-color: #368d3be9; /* Darker green */
+}
+
+
+.continue-button {
+  padding: 10px 15px;
+  background-color: #4caf50;  
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+
+
+.continue-button:hover {
+  background-color: #368d3be9; /* Darker blue */
+}
+.fullscreen-button{
+  padding: 10px 15px;
+  background-color: #2196F3; /* Blue */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+.fullscreen-button:hover{
+  background-color: #0a74cbd7;
+}
+.dark-theme .fullscreen-button{
+  background-color: #041d38;
+  color: #5c5b5b;
+}
+.dark-theme .fullscreen-button:hover{
+  background-color: #001225d3;
+  color: #919191;
+}
+
+/* Modal Styles */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: white;
+  width: 60%;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.modal-content h2 {
+  margin: 0 0 10px 0;
+}
+
+.modal-content button {
+  padding: 10px 15px;
+  background-color: #f44336; /* Red */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.dark-theme .modal-content{
+  background-color: #001F3F;
+}
+.dark-theme .modal-content button{
+  background-color: #041324;
+  color: #333;
+  font-weight: 700;
+}
+.dark-theme .modal-content button:hover{
+  background-color: #01070ebb;
+  color: #353232;
+  }
+.modal-content button:hover {
+  background-color: #da2a27d6; /* Darker red */
+}
+
+  .dark-theme .solve-button{
+    background-color:#164c19;   }
+  .dark-theme .solve-button:hover{
+    background-color:#0a3d0cd4; 
+    color: #a8a7a7;
+  }
+.dark-theme .continue-button{
+  background-color:#164c19; 
+}
+.dark-theme .continue-button:hover{
+  background-color:#0a3d0cd4; 
+  color: #a8a7a7;
+}
+  .dark-theme .solve-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+ 
+ 
+
+  @media (max-width: 600px) {
+    .contest-container {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+  }
+    
+  
+  .question-box {
+    margin-bottom: 15px;
+    width: calc(100% - 20px);
+}
+  
+   
+  }
+  
+  /* Medium screens (tablet) */
+  @media (min-width: 601px) and (max-width: 768px) {
+    .container {
+      padding: 15px;
+    }
+  
+    .question-box {
+      margin: 0px;
+      padding: 20px;
+      width: calc(100% - 0px);
+  }
+  
+    .button {
+      padding: 10px 20px;
+      font-size: 1rem;
+    }
+  }
+  
+  /* Large screens (desktop) */
+  @media (min-width: 769px) and (max-width:850px){
+    .container {
+      padding: 20px;
+    }
+  
+    .question-box {
+      margin-bottom: 15px;
+      /* text-align: center; */
+      width: 100%;
+  }
+  
+  .questions-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+  }
+}

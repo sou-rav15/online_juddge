@@ -1,0 +1,9 @@
+
+h2{
+    font-family: "kanit";
+    font-size: 1.2rem;
+}
+.dark-theme h2{
+    color: rgb(67, 67, 66);
+    
+}

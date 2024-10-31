@@ -1,0 +1,356 @@
+ :root {
+    --primary-color: #007bff;
+    --background-color: #f8f9fa;
+    --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    --text-color: #333;
+}
+
+.Contest-container{
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: var(--box-shadow);
+}
+.dark-theme .Contest-container {
+    background-color: #060606; /* Dark background */
+    color: #ffffff; /* White text */
+}
+.create-contest {
+    text-align: center;
+    color: var(--primary-color);
+    font-family: "kanit";
+}
+
+.dark-theme .create-contest{
+    color: #094204;
+    font-weight: 700;
+    font-family: "Kanit", sans-serif;
+
+}
+.form {
+    display: flex;
+    flex-direction: column;
+}
+.dark-theme .inputField, 
+.dark-theme .textareaField {
+    background-color: #2a2a2a; 
+    color: #afaeae; 
+    border: 1px solid #212121;
+}
+
+
+
+.dark-theme .addQuestionButton, 
+.dark-theme .submitButton, 
+.dark-theme .addTestCaseButton, 
+.dark-theme .removeQuestionButton {
+    background-color: #041221; /* Primary button color */
+    color: #6e6d6d; /* White text */
+    border: none;
+    border-radius: 4px;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+
+.dark-theme h2, 
+.dark-theme h3, 
+.dark-theme h4 {
+    color: #3a3939; /* White headings */
+}
+
+
+.inputGroup {
+    margin-bottom: 20px;
+}
+
+.inputField {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s;
+}
+.inputField:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+.dark-theme .inputField:focus{
+
+border: 1px solid black;
+outline: none;
+}
+.contestname{
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 4px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-weight: bold;
+ 
+    transition: border-color 0.3s;
+}
+.dark-theme .contestname{
+    background-color: #333;
+    border: 2px solid black;
+    outline:none;
+}
+.dark-theme .contestname:focus{
+    border-color: rgb(26, 25, 25);
+}
+
+
+.textareaField {
+    width: 600px; 
+    height: 300px; 
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s;
+    resize: vertical;
+}
+
+.textareaField:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+.dark-theme .textareaField:focus{
+    border: 1px solid black;
+}
+.questionBox, .testCaseBox {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: var(--box-shadow);
+    background: #f9f9f9; 
+}
+.dark-theme .testCaseBox{
+    border: 1px solid #212121;
+}
+.dark-theme .questionBox{
+    background-color: #1b1b1b;
+    border: 2px solid black;
+}
+.addQuestionButton{
+    background-color: #007bff;
+    width: 200px;
+margin-left: 7px;
+padding: 7px;
+outline: none;
+border: none;
+border-radius: 4px;
+color: white;
+
+}
+.addQuestionButton:hover{
+    background-color: #007bffc9;
+}
+
+.testCase {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: var(--box-shadow);
+}
+
+.addTestCaseButton, .submitButton {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px 15px;
+    margin: 7px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.addTestCaseButton:hover, .submitButton:hover {
+   
+    background-color: #007bffd3;
+}
+
+.lockOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(18, 18, 18, 0.9); 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+  
+  .lockMessage {
+    text-align: center;
+    color: var(--dark-text);
+  }
+  
+  .lockIcon {
+    font-size: 100px;
+    color: var(--lock-color, #44943d); 
+    margin-bottom: 20px;
+  }
+ 
+  
+  .unlockButton {
+    background-color: var(--dark-button-bg);
+    color: skyblue;
+    padding: 10px 20px;
+    border: 1px solid var(--dark-border);
+    margin-top: 20px;
+    cursor: pointer;
+    display: block;
+    border-radius: 4px;
+  }
+  
+  .unlockButton:hover, .backButton:hover {
+    background-color: var(--dark-button-hover-bg);
+  }
+  
+  .dark-theme .addQuestionButton:hover, 
+  .dark-theme .submitButton:hover, 
+  .dark-theme .addTestCaseButton:hover, 
+  .dark-theme .removeQuestionButton:hover {
+      background-color:#041221cc; 
+
+      color: #333;
+      /* Darker shade on hover */
+  }
+ 
+  .dark-theme .testCaseBox {
+      background-color: #2a2a2a; /* Dark background for test cases */
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 15px;
+  }
+  
+  .dark-theme .lockContainer {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: rgba(30, 30, 30, 0.9); /* Semi-transparent dark background */
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+      z-index: 1000; /* Bring it on top */
+  }
+  
+  .dark-theme .lockIcon {
+    font-size: 100px; 
+    /* color: #FFD700;  */
+    color:#052802; 
+    display: block;
+    text-align: center;
+}
+/* 
+.dark-theme .unlockButton {
+    margin-top: 15px;
+    background-color: #28a745; 
+    border: none;
+    border-radius: 4px;
+    padding: 10px 15px;
+    color: #ffffff; 
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+} */
+ .dark-theme .unlockButton{
+    color: rgb(53, 81, 92);
+ }
+
+.dark-theme .unlockButton:hover {
+    background-color: rgba(53, 81, 92, 0.728); /* Darker shade on hover */
+}
+
+/* .dark-theme .backButton {
+    margin-top: 10px;
+    background-color: #dc3545; 
+    border: none;
+    border-radius: 4px;
+    padding: 10px 15px;
+    color: #ffffff; 
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+} */
+ .dark-theme .backButton{
+    color: rgb(66, 18, 18);
+ }
+
+.dark-theme .backButton:hover {
+    background-color: rgba(96, 36, 36, 0.708); /* Darker shade on hover */
+}
+.backButton{
+    color: rgb(236, 95, 95);
+    border-radius: 4px;
+    background-color: var(--dark-button-bg);
+   
+    padding: 10px 20px;
+    border: 1px solid var(--dark-border);
+    margin-top: 20px;
+    cursor: pointer;
+    display: block;
+}
+.backButton:hover{
+    background-color: rgba(255, 0, 0, 0.76);
+}
+.unlockButton:hover{
+    background-color: rgba(67, 156, 190, 0.813);
+}
+.dark-theme label{
+    color:#646262;
+}
+.dark-theme .removeExampleButton{
+    background-color: #041221;
+    color: #6e6d6d;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    margin-left: 4px;
+}
+.dark-theme .addExampleButton{
+    background-color: #041221;
+    color: #6e6d6d;
+    border: none;
+    padding: 10px;
+    margin-top: 2px;
+    border-radius: 4px;
+    margin-left: 4px;
+}
+.dark-theme .addExampleButton:hover, 
+.dark-theme .removeExampleButton:hover{
+    background-color:#041221cc; 
+
+      color: #333;
+}
+.midSizeTextarea {
+    width: 80%; /* or your desired width */
+    height: 100px; /* or your desired height */
+    margin: 5px 0; /* add some spacing */
+}
+
+
+
+@media (max-width: 768px) {
+    .Contest-container {
+        margin: 20px; 
+        padding: 15px;
+    }
+
+    .textareaField {
+        height: 200px; 
+        width: 90%; 
+    }
+}
+
+@media (max-width: 480px) {
+    .textareaField {
+        height: 150px; 
+        width: 90%;}
+}   

@@ -1,0 +1,154 @@
+/* Homepage.css */
+
+.homepage {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    text-align: center;
+    background-color: #f0f4f8; /* Light background color that suits coding projects */
+  }
+  
+  .main-content {
+    display: flex; /* Use flexbox for side-by-side layout */
+    justify-content: space-between; /* Space between rotated box and text */
+    align-items: flex-start; /* Align items at the start */
+    margin: 20px 0;
+  }
+  
+  .rotated-box {
+    background-color: #007bff; /* Blue box color */
+    color: white;
+    padding: 20px;
+    border-radius: 10px; /* Rounded corners */
+    transform: rotate(-8deg); /* Rotate the box */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+    width: 300px; /* Fixed width for the box */
+    text-align: left; /* Left-align text within the box */
+  }
+.rotated-box h1{
+  color:white;
+}
+  .text-section {
+    flex: 1; /* Allow text section to take remaining space */
+    padding: 20px; /* Padding for text section */
+    text-align: left; /* Align text to the left */
+  }
+  
+  .quote {
+    font-size: 1.2em;
+    margin: 10px 0;
+    padding: 15px;
+    border-left: 5px solid #007bff; /* Blue left border for emphasis */
+  }
+  
+  .button-container {
+    margin-top: 20px; /* Spacing above the button */
+    text-align: center; /* Center the button */
+  }
+  
+  .create-account-button {
+    background-color: #28a745; /* Green button color */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px; /* Rounded button */
+    cursor: pointer;
+    font-size: 1em; /* Larger font size for visibility */
+  }
+  
+  .create-account-button:hover {
+    background-color: #218838; /* Darker shade on hover */
+  }
+  
+  .footer {
+    position: fixed; /* Fixes the footer at the bottom */
+    bottom: 0; /* Positions it at the bottom of the viewport */
+    left: 0; /* Aligns it to the left */
+    width: 100%; /* Makes the footer full width */
+    background-color: #f8f9fa; /* Background color for the footer */
+    padding: 10px 0; /* Padding for the footer */
+    text-align: center; /* Centers the text */
+    font-size: 0.9em; /* Smaller footer text */
+    color: #555; /* Gray footer text */
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow for depth */
+  }
+  
+
+  .dark-theme .homepage {
+    background-color: #1a1a1a; /* Dark background color */
+    color: #f0f0f0; /* Light text color */
+  }
+  .dark-theme h1{
+    color: #8b8989;
+  }
+  .dark-theme .main-content p {
+    color:#9c9696;
+  }
+  .dark-theme .text-section .quote  {
+    color:#9c9696;
+  }
+  .dark-theme .text-section h2 {
+    color:#9c9696;
+  }
+  .dark-theme .rotated-box {
+    background-color: #0d2742; /* Keep blue for the box */
+  }
+  
+  .dark-theme .text-section {
+    color: #f0f0f0; /* Light text for the text section */
+  }
+  
+  .dark-theme .quote {
+    border-left: 5px solid #007bff; /* Keep blue border for emphasis */
+  }
+  
+  .dark-theme .create-account-button {
+    background-color: #0a581c; /* Keep green button color */
+    color: white; /* Ensure text is readable */
+  }
+  
+  .dark-theme .create-account-button:hover {
+    background-color: #218838; /* Darker shade on hover */
+  }
+  
+
+  .dark-theme .footer {
+  background-color: #333; /* Dark background for the footer */
+  color: #f0f0f0; /* Light text for the footer */
+}
+
+@media  (max-width: 1020px) {
+ 
+    .homepage{
+      margin-bottom:  50px;
+    }
+    }
+
+
+@media (max-width: 540px) {
+  .main-content{
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+  }
+  .rotated-box{
+    width: 350px;
+  }
+  .homepage{
+    margin-bottom:  100px;
+  }
+  }
+
+@media (min-width: 300px)and (max-width: 420px) {
+  .main-content{
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+  }
+  .rotated-box{
+    width: 270px;
+  
+  }
+  .homepage{
+    margin-bottom:  100px;
+  }
+  }

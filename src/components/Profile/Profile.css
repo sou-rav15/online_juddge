@@ -1,0 +1,69 @@
+.profile-header {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+  
+  .bg-light {
+    background-color: #f8f9fa !important;
+  }
+  
+  .dark-theme {
+    background-color: #343a40;
+    color: #ffffff;
+  }
+  
+  .dark-theme .bg-light {
+    background-color: #495057 !important;
+  }
+  
+  ul {
+    padding-left: 0;
+  }
+  
+  li {
+    margin: 5px 0;
+  }
+  
+  h5 {
+    margin-bottom: 10px;
+  }
+  
+  .container {
+    padding: 20px; /* Add some padding to the container */
+}
+
+.bg-light {
+    background-color: #f8f9fa; /* Light background color */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
+    padding: 15px; /* Padding inside the box */
+    margin-bottom: 20px; /* Space between boxes */
+}
+
+/* Dark theme adjustments */
+.dark-theme .bg-light {
+    background-color: #343a40; /* Dark background color for dark theme */
+    color: #f8f9fa; /* Light text color */
+}
+
+.dark-theme .bg-light h5 {
+    color: #f8f9fa; /* Light text color for headings */
+}
+.createcontest{
+  text-decoration: none;
+  color: #343a40;
+  cursor: pointer;
+}
+.dark-theme .createcontest{
+  color: #f8f9fa;
+
+}
+.dark-theme .profile-header{
+  background-color: black;
+}
+.dark-theme .rounded-circle{
+  mix-blend-mode: luminosity;
+  filter: opacity(0.4);
+}
