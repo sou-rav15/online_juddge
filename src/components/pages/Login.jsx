@@ -155,7 +155,8 @@ function Login() {
 
     try {
       // const url = "http://localhost:8000/login";
-      const response = await fetch(apiUrl, {
+    const url = `${apiUrl}/login`;
+      const response = await fetch(url, {
         method: "POST",
         headers: {
           'Content-Type': 'application/json',
@@ -227,12 +228,12 @@ function Login() {
             <NavLink to='/Signup'>Sign up</NavLink>
           </div>
           <button type='submit' className='login-button'>Sign in</button>
-          //   <div className='mb-3' >
-//   <span>
+             <div className='mb-3' >
+  <span>
    
-//     <NavLink style={{ textDecoration: 'none', listStyle: 'none' }} to={'/ForgotPassword'}> Forgot Password?</NavLink>
-//   </span>
-// </div>
+    <NavLink style={{ textDecoration: 'none', listStyle: 'none' }} to={'/ForgotPassword'}> Forgot Password?</NavLink>
+   </span>
+ </div>
         </form>
       </div>
       {/* <ToastContainer /> */}
