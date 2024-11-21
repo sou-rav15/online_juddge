@@ -171,7 +171,8 @@ function App() {
 //timer
 const [timeLeft, setTimeLeft] = useState(600); // Set the initial timer (10 minutes)
 const [timerActive, setTimerActive] = useState(false);
-const apiUrl='https://bcknd.codehub.org.in'
+// const apiUrl='https://bcknd.codehub.org.in'
+const apiUrl='http://localhost:3000';
   useEffect(() => {
     async function fetchProblems() {
       const headers={
@@ -216,14 +217,14 @@ const apiUrl='https://bcknd.codehub.org.in'
           <Route path='/Profile' element={ <ProfilePage /> } /> 
           <Route path='/ForgotPassword' element={<ForgotPassword />} />
           {/* show all contests available */}
-          {/* <Route path='/contest' element={ <ContestPage  /> } />  */}
+          <Route path='/contest' element={ <ContestPage  /> } /> 
           {/* her you can write code for questions */}
-          {/* <Route path='/ContestQuestions/:contestId/:Qtitle' element={ <ContestQuestions /> } />  */}
+          <Route path='/ContestQuestions/:contestId/:Qtitle' element={ <ContestQuestions /> } /> 
 {/* to creat contest */}
-       {/* <Route path='/CreateContest' element={<CreateContest/>}/> */}
+       <Route path='/CreateContest' element={<CreateContest/>}/>
        {/* show question of particular contest */}
-       {/* <Route path='/ShowContestQuestion/:id' element={<ShowContestQuestion />}/> */}
-       {/* <Route path='/ShowContestQuestion' element={<ShowContestQuestion />}/> */}
+       <Route path='/ShowContestQuestion/:id' element={<ShowContestQuestion />}/>
+       <Route path='/ShowContestQuestion' element={<ShowContestQuestion />}/>
           
          
         </Routes>

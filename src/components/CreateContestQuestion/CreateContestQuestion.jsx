@@ -6,6 +6,7 @@ import { faLock } from '@fortawesome/free-solid-svg-icons';
 import { HandleError } from '../../utils';
 import { useTheme } from '../Themes/Themes.jsx';
 import { useNotification } from '../otherComponents/Notification/Notification.jsx';
+import { useAuth } from '../Authentication/Authenticaton.jsx';
 const CreateContest = () => {
     const [contestTitle, setContestTitle] = useState('');
     const [questions, setQuestions] = useState([
@@ -24,8 +25,10 @@ const CreateContest = () => {
     const [isAdmin, setIsAdmin] = useState(false); // Check if the user is an admin
     const navigate = useNavigate(); // To navigate back to the problem page
     const notify = useNotification();
-   
+    const { isAuthenticated } = useAuth(); 
 
+ // const apiUrl = 'https://bcknd.codehub.org.in';
+ const apiUrl='http://localhost:3000';
     // Unlock the page for admin
     const handleUnlock = () => {
         if (localStorage.getItem('key')) {
@@ -121,7 +124,7 @@ const CreateContest = () => {
 const userId= localStorage.getItem('userId');
 
         try {
-            const apiUrl = 'http://localhost:8000';
+            // const apiUrl = 'http://localhost:8000';
             const response = await fetch(`${apiUrl}/NewContest`, {
                 method: "POST",
                 headers,
@@ -139,6 +142,10 @@ const userId= localStorage.getItem('userId');
         // toast.error('Failed to fetch contest data');
         }
     };
+    if (!isAuthenticated) {
+        navigate('/login');
+            // return <div>Please log in to access the compiler.</div>; // Change the message as needed
+          }
 
     return (
         <div className="Contest-container">

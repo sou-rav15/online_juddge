@@ -1,15 +1,36 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { HandleError } from '../../utils';
-import { ToastContainer} from 'react-toastify';
-
+import { useAuth } from '../Authentication/Authenticaton'; 
+import { useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLock } from '@fortawesome/free-solid-svg-icons';
+import './Update.css'
+import { HandleError, HandleSuccess } from '../../utils';
+import { useTheme } from '../Themes/Themes';
 const AddTestCase = () => {
+  const { isAuthenticated } = useAuth(); 
+  const navigate = useNavigate();
   const [input, setInput] = useState('');
+  const [isLocked, setIsLocked] = useState(true); // Lock the page by default
+  const [isAdmin, setIsAdmin] = useState(false);
   const [output, setOutput] = useState('');
   const { id } = useParams();
+  const { isDark } = useTheme();
+   // const apiUrl = 'https://bcknd.codehub.org.in';
+   const apiUrl='http://localhost:3000';
   // console.log('id->',id);
-  // const apiUrl = import.meta.env.VITE_API_URL;
-  const apiUrl = 'https://bcknd.codehub.org.in';
+  const handleUnlock = () => {
+    if (localStorage.getItem('key')) {
+        setIsLocked(false);
+    } else {
+        console.log('not admin');
+       
+        HandleError('Only admin can unlock the page',isDark);
+    }
+};
+const handleBack = () => {
+    navigate('/Problems'); // Replace '/problem' with the actual path to your problem page
+};
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -27,46 +48,69 @@ const AddTestCase = () => {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
-          'accessKey':localStorage.getItem('key')
         },
         body: JSON.stringify(testCaseData),
-      });if(!localStorage.getItem('key')){
-              const data =await response.json();
-console.log('response',data);
-HandleError(data.message);
-      }
-
+      });
+// console.log('response',response);
       if (!response.ok) {
         throw new Error('Failed to add test case');
       }
 
       const result = await response.json();
       // console.log('Test case added:', result);
-
+const{success , error}=result;
       // Clear the input fields after successful submission
+      
       setInput('');
       setOutput('');
+      if(success){
+        console.log('here');
+        
+        HandleSuccess('TestCases added to the database', isDark);
+      }
+      
+
     } catch (error) {
-      console.error('Error:', error);
-      HandleError(error);
+      // console.error('Error:', error);
     }
   };
+  if (!isAuthenticated) {
+   
+    return <div>
+      <p className='ms-2'>Invalid token , token is required to acces this resources, please login..</p>
+    </div>; // Prevent rendering until navigation occurs
+}
+
+if(isLocked){
+  return(<>
+   <div className="lockOverlay">
+  <div className="lockMessage">
+      <FontAwesomeIcon icon={faLock} className="lockIcon" />
+      <h2>Page is locked!</h2>
+      <button onClick={handleUnlock} className="unlockButton">Unlock</button>
+      <button onClick={handleBack} className="backButton">Back</button>
+  </div>
+</div>
+  </>
+ 
+  )
+}
 
   return (
     <div className="container mt-4">
       <h3>Add Test Case</h3>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
-          <label htmlFor="input" className="form-label">Input</label>
+          <label htmlFor="input" className="form-label texts">Input</label>
           <textarea
             id="input"
             rows="3"
             value={input}
             onChange={(e) => setInput(e.target.value)}
             className="form-control"
-            placeholder='Enter input as JSON (e.g., ["1", "2", "3"])'
+            placeholder='Enter input as JSON (e.g., ["{Testcase1}", "{Testcase2}", "{Testcase3}"])'
           />
-         <small className="form-text text-muted">
+         <small className="form-text text">
   - Enter test cases in JSON format as an array of objects. Each object should represent a test case with key-value pairs.
   - Example: `[object1,object2]`Each objects represent each test case with key-value;
   - Ensure all keys are enclosed in double quotes and the format is valid JSON.
@@ -74,7 +118,7 @@ HandleError(data.message);
         </div>
         
         <div className="mb-3">
-          <label htmlFor="output" className="form-label">Expected Output</label>
+          <label htmlFor="output" className="form-label texts">Expected Output</label>
           <input
             id="output"
             type="text"
@@ -83,7 +127,7 @@ HandleError(data.message);
             className="form-control"
             placeholder='Enter expected output'
           />
-         <small className="form-text text-muted">
+         <small className="form-text text">
   - For a single number, use double quotes in square brackets, e.g., `["20","4"]`.
   - For an array of numbers, use double square brackets, e.g., `[[20, 3], [1, 4]]`.
   - For an array of strings, use double square brackets with each string in double quotes, e.g., `["string1", "string2"]`.
@@ -94,15 +138,11 @@ HandleError(data.message);
           </small>
         </div>
         
-        <button type="submit" className="btn btn-primary">Add TestCases</button>
-        
-      </form><ToastContainer/> 
+        <button type="submit" className="add-example">Add TesCases</button>
+      </form>
     </div>
   );
-};
-
-
-
+}; 
 export default AddTestCase;
 
 

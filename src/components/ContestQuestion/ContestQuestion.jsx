@@ -4,6 +4,8 @@ import Compiler2 from '../otherComponents/Compiler2.jsx';
 import { useTheme } from '../Themes/Themes.jsx';
 import { useTimer } from '../otherComponents/Timer/TimerContext.jsx';
 import './ProblemDetail.css';
+import { useAuth } from '../Authentication/Authenticaton.jsx';
+import Compiler1 from '../otherComponents/Compiler1.jsx';
 
 function ContestQuestions() {
   const { contestId, Qtitle } = useParams();
@@ -12,8 +14,11 @@ function ContestQuestions() {
   const [questions, setQuestions] = useState();
   const [showCompletionMessage, setShowCompletionMessage] = useState(false);
   const [remainingTime, setRemainingTime] = useState(0); // Use state to track remaining time
-  const apiUrl = 'http://localhost:8000';
+  // const apiUrl = 'http://localhost:8000';
+   // const apiUrl = 'https://bcknd.codehub.org.in';
+   const apiUrl='http://localhost:3000';
   const { active, startTimer } = useTimer();
+  const { isAuthenticated } = useAuth(); 
 
   useEffect(() => {
     const fetchQuestions = async () => {
@@ -73,7 +78,10 @@ function ContestQuestions() {
     const secs = seconds % 60;
     return `${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
   };
-
+  if (!isAuthenticated) {
+    navigate('/login');
+        // return <div>Please log in to access the compiler.</div>; // Change the message as needed
+      }
   if (!questions) return <div>Loading question or question not found...</div>;
 
   return (
@@ -140,7 +148,7 @@ function ContestQuestions() {
               <div className={`card ${isDark ? 'bg-dark text-light' : 'bg-light'}`}>
                 <div className="card-body">
                   <h5>Your Code</h5>
-                  <Compiler2 />
+                  <Compiler2/>
                 </div>
               </div>
             </div>

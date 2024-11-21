@@ -110,33 +110,33 @@ const CustomNavbar = () => {
     logout();
     navigate('/');
   };
-  const apiUrl = 'https://bcknd.codehub.org.in';
-//   const apiUrl = 'http://localhost:8000';
+  // const apiUrl = 'https://bcknd.codehub.org.in';
+  const apiUrl = 'http://localhost:3000';
     const handleAdmin=async () => {
       const userId =localStorage.getItem('userId');
-        // try {
-        //     const url= `${apiUrl}/checkAdmin/${userId}`
-        //     const response= await fetch(url);
-        //     const result = await response.json();
-        //     console.log(result);
-        //     const {isAdmin, accessKey}=result;
-        //     if(isAdmin){
-        //         localStorage.setItem('key',accessKey) ;       
-        //         HandleSuccess('You are the admin')  ;     
-        //     }
-        //     else{
-        //         // console.log('false');
-        //         // notify({
-        //         //   title: "Success!",
-        //         //   message: "This is a success message!",
-        //         //   type: "success",
-        //         // });
-        //         HandleError('You are not the admin',isDark);
+        try {
+            const url= `${apiUrl}/checkAdmin/${userId}`
+            const response= await fetch(url);
+            const result = await response.json();
+            console.log(result);
+            const {isAdmin, accessKey}=result;
+            if(isAdmin){
+                localStorage.setItem('key',accessKey) ;       
+                HandleSuccess('You are the admin')  ;     
+            }
+            else{
+                // console.log('false');
+                // notify({
+                //   title: "Success!",
+                //   message: "This is a success message!",
+                //   type: "success",
+                // });
+                HandleError('You are not the admin',isDark);
                 
-        //     }
-        // } catch (error) {
-            
-        // }
+            }
+        } catch (error) {
+            HandleError(error);
+        }
 
         console.log('Admin button clicked');
         // Add functionality here, e.g., navigate to a different page or show a modal

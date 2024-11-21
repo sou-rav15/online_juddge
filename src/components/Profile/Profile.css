@@ -67,3 +67,108 @@
   mix-blend-mode: luminosity;
   filter: opacity(0.4);
 }
+
+/* Modal overlay to darken background */
+.question-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Centered modal box */
+.question-modal {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 500px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.question-modal h4 {
+  margin-bottom: 15px;
+ 
+
+}
+
+.question-modal ul {
+  max-height: 300px;
+  overflow-y: auto;
+  text-align: left;
+}
+.question-modal li{
+  font-size: 12px;
+}
+.question-modal button{
+  font-size: 12px;
+}
+.dark-theme .question-modal-overlay{
+ background: rgba(0, 0, 0, 0.7);;
+}
+.dark-theme .question-modal{
+  background-color: #01061e;
+  color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+ 
+
+}
+.dark-theme .question-modal h4 {
+  margin-bottom: 15px;
+  color: #686565;
+}
+.dark-theme .question-modal ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.dark-theme .question-modal li {
+  background-color: #060836;
+  border:  none;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #969494;
+  font-size: 12px;
+}
+.dark-theme .question-modal li:last-child {
+  margin-bottom: 0;
+}
+.dark-theme .bg-success {
+  background-color: #198754  !important; /* Green for 'Accepted' */
+}
+
+ .dark-theme .bg-danger {
+  background-color: #a31220  !important; /* Red for 'Rejected' */
+}
+
+/* Close button styling */
+.dark-theme .question-modal button {
+  margin-top: 15px;
+  color: #817f7f;
+  background-color:  #060836;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+.dark-theme .question-modal button:hover {
+  background-color:  #050661d3;
+  color: #fff;
+}
+
+.dark-theme .question-modal ul {
+  list-style: none;
+  padding-right: 8px;
+  margin: 0;
+}

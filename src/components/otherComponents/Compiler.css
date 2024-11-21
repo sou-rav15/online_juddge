@@ -85,3 +85,31 @@ color: #515151;
 .dark-theme .form-control::placeholder { /* Modern browsers */
   color: gray;
 }
+.output {
+  /* Existing styles for the output */
+  white-space: pre-wrap; /* Ensure long text wraps */
+}
+
+.output-container {
+  display: flex;           /* Enable flexbox */
+  flex-direction: column;  /* Align items in a column */
+  justify-content: center;  /* Center vertically */
+  align-items: center;      /* Center horizontally */
+  height: 100%;             /* Full height to center properly */
+}
+.dark-theme .output-container{
+  border: none;
+}
+select {
+  word-wrap: normal;
+  width: 140px;
+  border: 1px solid black;
+  border-radius: 5px;
+  background: beige;
+}
+select option{
+  background-color: #c8cfd7;
+}
+select option:hover{
+  background-color: #16191d;
+}

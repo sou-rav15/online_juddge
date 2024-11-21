@@ -5,6 +5,7 @@ import './ShowContestQuestion.css';
 import Loader from '../Loading/Loading.jsx';
 import { useTimer } from '../Timer/TimerContext.jsx';
 import Timer from '../Timer/Timer.jsx';
+import { useAuth } from '../../Authentication/Authenticaton.jsx';
 
 const ShowContestQuestion = () => {
   const navigate = useNavigate();
@@ -12,7 +13,9 @@ const ShowContestQuestion = () => {
   const [title, setTitle] = useState('contest');
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
-  const apiUrl = 'http://localhost:8000';
+  const{isAuthenticated}=useAuth();
+ // const apiUrl = 'https://bcknd.codehub.org.in';
+ const apiUrl='http://localhost:3000';
   const { active, startTimer } = useTimer(); // Only using what's needed
 
   useEffect(() => {
@@ -53,7 +56,12 @@ const ShowContestQuestion = () => {
   const handleBack=()=>{
     navigate(-1);
   }
-
+  if (!isAuthenticated) {
+   
+    return <div>
+      <p className='ms-2'>Invalid token , token is required to acces this resources, please login..</p>
+    </div>; // Prevent rendering until navigation occurs
+}
   if (loading) {
     return <Loader />;
   }

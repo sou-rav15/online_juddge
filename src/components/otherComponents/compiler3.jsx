@@ -1,109 +1,101 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { HandleError } from '../../utils';
+// import handleProblemSubmission from './Submission/Submission.jsx';
 import handleProblemSubmission from './SubmissionStatus';
-import saveCodeToBackend from './CodeSave';
-import { ToastContainer} from 'react-toastify';
 import MonacoEditor from '@monaco-editor/react';
-
+import * as monaco from 'monaco-editor';
+import saveCodeToBackend from './CodeSave';
+import Loader from './Loading/Loading.jsx';
+import LoaderSmall from './Loading/LoadingSmall.jsx';
+import './Compiler.css'
 const Compiler3 = ({ problemId }) => {
-
+  const [language, setLanguage] = useState('cpp');
+  const [loading, setLoading] = useState(false);
+  const [code, setCode] = useState('');
+  const [input, setInput] = useState('');
+  const [output, setOutput] = useState('');
+ 
+  // const apiUrl = 'https://bcknd.codehub.org.in';
+  const apiUrl='http://localhost:3000';
   const languageMapping = {
     cpp: 'cpp',
     js: 'javascript',
     py: 'python',
-    java: 'java'
+    java: 'java',
+    C:'C'
   };
-
-  const [language, setLanguage] = useState('cpp');
-  const [code, setCode] = useState('');
-  const [input, setInput] = useState('');
-  const [output, setOutput] = useState('');
-const userId= localStorage.getItem('userId')
-// const apiUrl = import.meta.env.VITE_API_URL;
-const apiUrl = 'https://bcknd.codehub.org.in';
-// code fethcing
-
-useEffect(() => {
-  // console.log('im here')
-  const fetchSavedCode = async () => {
-    try {
-      const url = `${apiUrl}/codeSave/${userId}/${problemId}`; // Include userId
-      const headers={
-        headers:{
-          'Authorization':localStorage.getItem('token')
+  const userId= localStorage.getItem('userId');
+  useEffect(() => {
+   
+    // console.log('im here')
+    const fetchSavedCode = async () => {
+      try {
+        const url = `${apiUrl}/codeSave/${userId}/${problemId}`; // Include userId
+        const headers={
+          headers:{
+            'Authorization':localStorage.getItem('token')
+          }
         }
+        const response = await fetch(url,headers);
+        const result = await response.json();
+        if (result.code) {
+          setCode(result.code); // Set the fetched code in the editor
+        }
+      } catch (error) {
+        console.error('Error fetching saved code:', error);
       }
-      const response = await fetch(url,headers);
-      const result = await response.json();
-      if (result.code) {
-        setCode(result.code); // Set the fetched code in the editor
-      }
-    } catch (error) {
-      console.error('Error fetching saved code:', error);
-    }
-  };
-
-  fetchSavedCode();
-}, [problemId, userId]);
+    };
+  
+    fetchSavedCode();
+  }, [problemId, userId]);
+  
 
   const handleRunCode = async(e) => {
     // Logic for running code (e.g., send code and input to backend)
 
     e.preventDefault();
-    // if(language==="Javascript") setLanguage('js');
-// console.log('language is ->',language);
+    setLoading(true);
     const payLoad = {
       language,
       code,
-      input // Include input in the payload
+      input,
     };
 
     if (!code) {
-      
-      console.log('code is empty');
-      return HandleError("Code is empty");
-      
+      return alert('Code is empty');
     }
-// console.log("payLoad is->",payLoad)
+
     try {
-      const url = `${apiUrl}/run`;
+      const url = `${apiUrl}/run`; // Replace with your actual URL
       const response = await fetch(url, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         },
-        body: JSON.stringify(payLoad)
+        body: JSON.stringify(payLoad),
       });
 
       const result = await response.json();
-     
-      console.log('result output',result.output);
-      // console.log(' error',result.error.stderr)
-      if(result.output){// this part is changed
-        // console.log('here');
-        
+      console.log('response->', response);
+      
+      if (result.output) {
         setOutput(result.output);
+      } else {
+        setOutput(result.error.stderr ? result.error.stderr : result.error.error?result.error.error:result.error||"Unknown error please check code and try again");
+
       }
-      else if(result.error&&result.error.stderr){
-        setOutput(result.error.stderr)
-      }
-else{
-  setOutput('something wrong check code and inputs again ,check if it is infinte loop')
-}
     } catch (error) {
       console.log(error);
+    }finally {
+      setLoading(false);  // Set loading to false after result is received
     }
-    console.log(code);
-
     // setOutput('Output will be displayed here.');
   };
 
-  const handleSubmitCode = async (e) => {
-    // Logic for submitting code (e.g., for assessment or storing solutions)
-
-    // console.log(language, 'problemid',problemId,code);
-    e.preventDefault()
+  const handleSubmitCode = async(e) => {
+  e.preventDefault();
+  setLoading(true);
     const payLoad = {
       problem_id: problemId,
       language,
@@ -126,16 +118,65 @@ else{
       // console.log(response);
 
       const result = await response.json();
-      console.log('result is->',result);
+      // console.log('result is->',result.error);
+     
+      
+  //     function extractRelevantError(compileError) {
+  //       // Adjusting the pattern for Windows path, line numbers, and the error message
+  //       // const errorPattern = /([a-zA-Z]:.*?\.cpp:\d+:\d+):\s*(error:.*?)\r?\n\s*(.+)/;
+  //       const errorPattern = /([^\\]+\.cpp)(.*)/s;
+  // const match = compileError.match(errorPattern);
 
-  
+  // if (match) {
+  //   return `${match[1]}${match[2]}`.trim(); // Remove extra whitespace/newlines
+  // } else {
+  //   return "No relevant error found";
+  // }
+  //     }
+      
+  //     const relevantError = extractRelevantError(compileError);
+  //     console.log(relevantError);
+      
+      
+  if(result.error){
+    console.log(result);
+    setOutput(result.error.stderr||result.error.error||result.error||'An unknown error occured');
+    return;
+  }
    const Status = result.map((obj) => obj.status);
+   console.log('status->',Status);
+   
       const finalStatus = Status.every(state => state === 'Accepted') ? 'Accepted' : 'Not Accepted';
+      console.log('finalStatus->', finalStatus);
+    
+      if(result[0].status==="Error"||Status[0]==="Error"){
+        console.log('in error');
+        const isEmptyObject = (obj) => {
+          return Object.keys(obj).length === 0;
+      };
+      // const relevantError = extractRelevantError(result[0].errorMessage);
+      if(isEmptyObject(result[0].errorMessage)){
+        setOutput("An unexpected error occurred.");
+        return ;
+      }
+      if(result.error){
+        setOutput(result.error.stderr ? result.error.stderr : result.error.error?result.error.error:result.error||"Unknown error please check code and try again");
+        return;
+      }
+        setOutput(result[0].errorMessage?result[0].errorMessage:'an error occured');
+        return;
+        console.log('not returned');
+        
+         
+      }
       const statusMessages = result.map((obj, index) => {
         return `Test Case ${index + 1}: ${obj.status}`;
-
-      });
-    
+   
+         });
+         console.log('statusMessages->',statusMessages);
+         
+      
+      
       // console.log('staus message->',Status)
       setOutput(statusMessages.join('\n'));
 
@@ -145,15 +186,10 @@ else{
 
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoading(false);  // Set loading to false after result is received
     }
-    //  console.log(code);
-
-    // setOutput('Code submitted successfully.');
   };
-
-
-
-
 
   return (
     <div>
@@ -165,8 +201,8 @@ else{
           onChange={(e) => setLanguage(e.target.value)}
         >
           <option value="cpp">C++</option>
-          <option value="javascript">JavaScript</option>
-          <option value="python">Python</option>
+          <option value="C">C</option>
+          <option value="py">Python</option>
           <option value="java">Java</option>
         </select>
       </div>
@@ -201,21 +237,21 @@ else{
 
       {/* Buttons */}
       <div className="mb-2 d-flex justify-content-between">
-        <button className="me-2 custom-button" onClick={handleRunCode}>
+        <button className="custom-button" onClick={handleRunCode}>
           Run Code
         </button>
-        <button className="btn btn-primary" onClick={handleSubmitCode}>
+        <button className="submit-button" onClick={handleSubmitCode}>
           Submit Code
         </button>
       </div>
 
       {/* Output Area */}
-      <div className="border p-3 bg-light" style={{ minHeight: '100px' }}>
-        <pre>{output}</pre>
+      <div className=" p-3 bg-light output-container " style={{ minHeight: '100px', fontSize:'14px'}}>
+    { loading?<LoaderSmall/>:( <pre className='output'>{output}</pre>
+      )}
+        {/* <pre className='output'>{loading?(<LoaderSmall/>):output}</pre> */}
       </div>
-      <ToastContainer />
     </div>
-    
   );
 };
 

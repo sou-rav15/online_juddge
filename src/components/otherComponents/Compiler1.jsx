@@ -181,7 +181,8 @@ const Compiler1 = () => {
   const { isAuthenticated } = useAuth(); 
   const { isDark } = useTheme();
   const navigate = useNavigate();
-  const apiUrl = 'https://bcknd.codehub.org.in';
+  // const apiUrl = 'https://bcknd.codehub.org.in';
+  const apiUrl='http://localhost:3000';
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false); // Stop loading after 2 seconds
@@ -194,9 +195,11 @@ const Compiler1 = () => {
     js: javascript(),
     py: python(),
     java: java(),
+    C: cpp(),
   };
 
   const defaultSnippets = {
+     C: '#include <stdio.h>\nint main() {\n  printf("Hello, World!\\n");\n  return 0;\n}',
     cpp: '#include <iostream>\n\nint main() {\n    std::cout << "Hello, World!";\n    return 0;\n}',
     js: 'console.log("Hello, World!");',
     py: 'print("Hello, World!")',
@@ -238,7 +241,7 @@ const Compiler1 = () => {
       });
 
       const result = await response.json();
-console.log('result is->',result);
+console.log('resultt is->',result);
 
       if (result.output) {
         setOutput(result.output);
@@ -285,9 +288,10 @@ navigate('/login');
           <div className="row mb-3">
             <div className="col-md-4">
               <select className="custom-select" value={language} onChange={handleLanguage}>
-                <option value="js">JavaScript</option>
+                {/* <option value="js">JavaScript</option> */}
                 <option value="py">Python</option>
                 <option value="cpp">C++</option>
+                <option value="C">C</option>
                 <option value="java">Java</option>
               </select>
             </div>

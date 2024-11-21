@@ -138,7 +138,8 @@ function Login() {
   const { login } = useAuth(); // Use the Auth context
   const { isAuthenticated } = useAuth(); 
   const { isDark } = useTheme();
-  const apiUrl = 'https://bcknd.codehub.org.in';
+  const apiUrl='http://localhost:3000';
+  // const apiUrl = 'https://bcknd.codehub.org.in';
   const handleChange = (e) => {
     const { name, value } = e.target;
     setLoginInfo((prev) => ({ ...prev, [name]: value }));

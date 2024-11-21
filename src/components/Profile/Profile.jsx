@@ -7,15 +7,18 @@ import { Bar } from 'react-chartjs-2'; // Import Bar chart component
 import { Chart, registerables } from 'chart.js'; // Import Chart and registerables
 import './Profile.css'; // For custom CSS styles
 import { ThreeDots } from 'react-loader-spinner'; // Import a specific loader
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Timer from '../otherComponents/Timer/Timer';
+import { useAuth } from '../Authentication/Authenticaton';
+import { HandleError } from '../../utils';
+import { useTheme } from '../Themes/Themes';
 
 // Register all necessary components from Chart.js
 Chart.register(...registerables);
 
 const ProfilePage = () => {
-  // const apiUrl = 'http://localhost:8000';
-  const apiUrl = 'https://bcknd.codehub.org.in';
+  const apiUrl = 'http://localhost:3000';
+  // const apiUrl = 'https://bcknd.codehub.org.in';
   const [profile, setProfile] = useState(null);
   const [loading, setLoading] = useState(true); // State for loading
   const userId = localStorage.getItem('userId');
@@ -25,6 +28,9 @@ const ProfilePage = () => {
   const [showHelp, setShowHelp] = useState(false);
   const [showQuestions, setShowQuestions] = useState(false);
   const [admin, setShowadmin] = useState(false);
+  const { isAuthenticated } = useAuth(); 
+  const navigate = useNavigate();
+  const { isDark } = useTheme();
 const gender = localStorage.getItem('gender');
   useEffect(() => {
     const fetchProfileData = async () => {
@@ -36,18 +42,27 @@ const gender = localStorage.getItem('gender');
       try {
         setLoading(true); // Start loading
         const response = await fetch(`${apiUrl}/Profile/${userId}`, headers);
-        if (!response.ok) throw new Error('Failed to fetch profile data');
+        if (!response.ok) {
+          HandleError('Failed to fetch profile dataaaa', isDark)
+          // throw new Error('Failed to fetch profile data');
+        }
         const data = await response.json();
+        console.log('profiledata->',data);
+
         setProfile(data);
       } catch (error) {
-        console.error('Error fetching profile data:', error);
-        toast.error('Failed to fetch profile data');
+        // console.error('Error fetching profile data:', error);
+        // HandleError('Failed to fetch profile data');
       } finally {
         setLoading(false); // Stop loading
       }
     };
     fetchProfileData();
   }, [userId, apiUrl]);
+  if (!isAuthenticated) {
+    navigate('/login');
+        // return <div>Please log in to access the compiler.</div>; // Change the message as needed
+      }
 
   if (loading) {
     return (
@@ -56,14 +71,15 @@ const gender = localStorage.getItem('gender');
       </div>
     );
   }
-
+  const problemsSolved = Array.isArray(profile.problemsSolved) ? profile.problemsSolved : [];
+  const badges = Array.isArray(profile.badges) ? profile.badges : [];
   // Data for the acceptance rate graph
   const acceptanceRateData = {
     labels: ['Accepted', 'Rejected'],
     datasets: [
       {
         label: 'Acceptance Rate',
-        data: [profile.acceptedCount, profile.rejectedCount],
+        data: [profile.acceptedCount||'NA', profile.rejectedCount||'NA'],
         backgroundColor: ['#4caf50', '#f44336'], // Green for accepted, red for rejected
       },
     ],
@@ -184,15 +200,44 @@ const gender = localStorage.getItem('gender');
             </button>
             {showQuestions && (
               <ul className="list-unstyled">
-                {profile.solvedQuestionsList.map((question, index) => (
+                {/* {profile.solvedQuestionsList.map((question, index) => (
                   <li key={index}>{question.title}</li>
-                ))}
+                ))} */}
+            
               </ul>
             )}
+            
           </div>
         </div>
       </div>
+      {showQuestions && (
+          <div className="question-modal-overlay" onClick={() => setShowQuestions(false)}>
+            <div className="question-modal" onClick={(e) => e.stopPropagation()}>
+              <h4>Attempted Questions</h4>
+              <ul className="">
+              {problemsSolved.length > 0 ? (
+              problemsSolved.map((problem, index) => (
+                <li key={index} className="list-group-item d-flex justify-content-between align-items-center">
+                  <span>{problem.title}</span>
+                  <span>{new Date(problem.submittedAt).toTimeString()}</span> {/* Format the date */}
+                  <span className={`badge ${problem.status === 'Accepted' ? 'bg-success' : 'bg-danger'}`}>
+                    {problem.status}
+                  </span>
+                </li>
+              ))
+            ) : (
+              <li className="list-group-item">No problems solved yet.</li>
+            )}
 
+              </ul>
+                    
+              <button className="btn btn-secondary mt-3" onClick={() => setShowQuestions(false)}>
+                Close
+              </button>
+            </div>
+          </div>
+        )}
+  
       <ToastContainer />
     </div>
     </>

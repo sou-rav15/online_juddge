@@ -205,14 +205,20 @@ import { useNavigate, useParams } from 'react-router-dom';
 import Compiler3 from '../otherComponents/compiler3.jsx';
 import { useTheme } from '../Themes/Themes.jsx'; // Import the theme context
 import './ProblemDetails.css'
+import { useAuth } from '../Authentication/Authenticaton.jsx';
 function ProblemDetails({ problems }) {
   const navigate =useNavigate();
   const { id } = useParams();
   const problem = problems.find(p => p._id === id);
   const { isDark } = useTheme(); // Get the current theme
+  const { isAuthenticated } = useAuth(); 
 const handleBack=()=>{
   navigate(-1);
 }
+if (!isAuthenticated) {
+  navigate('/login');
+      // return <div>Please log in to access the compiler.</div>; // Change the message as needed
+    }
   if (!problem) return <div>Select a problem to view details</div>;
 
   return (

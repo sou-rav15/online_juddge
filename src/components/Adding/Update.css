@@ -1,0 +1,83 @@
+.add-example{
+    padding: 10px 15px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+  }
+  
+  .add-example:hover {
+    background-color: #368d3be9;
+  }
+  
+  .dark-theme .add-example{
+    background-color:#164c19;  
+    color:#727272;
+ }
+ 
+  .dark-theme .add-example:hover{
+    background-color:#0a3d0cd4; 
+  color: #515151;
+  }
+
+  .update-problem{
+    padding: 10px 15px;
+    background-color: #2196F3; /* Blue */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+  }
+  .update-problem:hover{
+    background-color: #0765b3d7;
+  }
+  .dark-theme .update-problem{
+    background-color: #041d38;
+    color: #5c5b5b;
+  }
+  .dark-theme .update-problem:hover{
+    background-color: #001225d3;
+    color: #919191;
+  }
+  .remove-button{
+    background-color: rgb(184, 44, 44);
+    padding: 10px 15px;
+    font-size: 16px;
+  
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  .remove-button:hover{
+    background-color: rgba(164, 22, 22, 0.815);
+  color: #b7b5b5;
+}
+  
+.dark-theme .remove-button{
+    background-color: rgb(70, 3, 3);
+color: #5c5b5b;
+}
+.dark-theme .remove-button:hover{
+    background-color:rgba(43, 4, 4, 0.874) ;
+    color: #393838;
+}
+
+.dark-theme .text{
+color:#515151;
+}
+.dark-theme .form-label{
+color:#515151;
+}
+.dark-theme .texts{
+    color: #4b4b4b;
+    font-weight: 600;
+}
+body.dark-theme .form-control {
+    color: #a19b9b;
+}
