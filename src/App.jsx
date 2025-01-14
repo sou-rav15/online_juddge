@@ -171,9 +171,9 @@ function App() {
 //timer
 const [timeLeft, setTimeLeft] = useState(600); // Set the initial timer (10 minutes)
 const [timerActive, setTimerActive] = useState(false);
-// const apiUrl='https://bcknd.codehub.org.in'
+const apiUrl='https://bcknd.codehub.org.in'
 // const apiUrl='http://localhost:3000';
-const apiUrl = import.meta.env.VITE_API_URL
+// const apiUrl = import.meta.env.VITE_API_URL
   useEffect(() => {
     async function fetchProblems() {
       const headers={
