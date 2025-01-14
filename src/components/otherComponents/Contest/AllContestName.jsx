@@ -14,8 +14,8 @@ const ContestPage = () => {
   const { active, time, startTimer, stopTimer } = useTimer();
   const timerDuration = 60; // Timer duration in seconds
   const navigate = useNavigate();
-   // const apiUrl = 'https://bcknd.codehub.org.in';
-   const apiUrl='http://localhost:3000';
+   const apiUrl = 'https://bcknd.codehub.org.in';
+  //  const apiUrl='http://localhost:3000';
   const { isAuthenticated } = useAuth(); 
   useEffect(() => {
     async function fetchQuestions() {

@@ -8,7 +8,8 @@ import { ToastContainer} from 'react-toastify';
 const Admin = () => {
    const userId= localStorage.getItem('userId');
 //    const apiUrl = import.meta.env.VITE_API_URL;
-const apiUrl = 'https://bcknd.codehub.org.in';
+// const apiUrl = 'https://bcknd.codehub.org.in';
+const apiUrl = import.meta.env.VITE_API_URL
     const handleButtonClick =async () => {
         try {
             const url= `${apiUrl}/checkAdmin/${userId}`

@@ -27,8 +27,9 @@ const CreateContest = () => {
     const notify = useNotification();
     const { isAuthenticated } = useAuth(); 
 
- // const apiUrl = 'https://bcknd.codehub.org.in';
- const apiUrl='http://localhost:3000';
+//  const apiUrl = 'https://bcknd.codehub.org.in';
+const apiUrl = import.meta.env.VITE_API_URL
+//  const apiUrl='http://localhost:3000';
     // Unlock the page for admin
     const handleUnlock = () => {
         if (localStorage.getItem('key')) {

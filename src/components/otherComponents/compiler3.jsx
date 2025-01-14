@@ -16,8 +16,8 @@ const Compiler3 = ({ problemId }) => {
   const [input, setInput] = useState('');
   const [output, setOutput] = useState('');
  
-  // const apiUrl = 'https://bcknd.codehub.org.in';
-  const apiUrl='http://localhost:3000';
+  const apiUrl = 'https://bcknd.codehub.org.in';
+  // const apiUrl='http://localhost:3000';
   const languageMapping = {
     cpp: 'cpp',
     js: 'javascript',

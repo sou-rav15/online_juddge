@@ -147,7 +147,6 @@ import AddProblemPage from './components/Adding/AddQuestion.jsx';
 import ProfilePage from './components/Profile/Profile.jsx';
 import UpdateProblemPage from './components/Adding/UpdateProblem.jsx';
 import AddTestCase from './components/Adding/AddTestcase.jsx';
-import TermsandCondition from './components/Pages1/TermsandCondition.jsx';
 import { ThemeProvider } from './components/Themes/Themes.jsx';
 import { AuthProvider, useAuth } from './components/Authentication/Authenticaton.jsx'; // Import useAuth if needed
 import ContestPage from './components/otherComponents/Contest/AllContestName.jsx';
@@ -161,6 +160,7 @@ import Timer from './components/otherComponents/Timer/Timer.jsx';
 import { TimerProvider } from './components/otherComponents/Timer/TimerContext.jsx';
 
 import ForgotPassword from './components/forgotPassword/ForgotPassword.jsx'
+import TermsAndConditions from './components/Terms&condition/TermsandCondition.jsx';
 
 
 function App() {
@@ -172,7 +172,8 @@ function App() {
 const [timeLeft, setTimeLeft] = useState(600); // Set the initial timer (10 minutes)
 const [timerActive, setTimerActive] = useState(false);
 // const apiUrl='https://bcknd.codehub.org.in'
-const apiUrl='http://localhost:3000';
+// const apiUrl='http://localhost:3000';
+const apiUrl = import.meta.env.VITE_API_URL
   useEffect(() => {
     async function fetchProblems() {
       const headers={
@@ -207,7 +208,7 @@ const apiUrl='http://localhost:3000';
           <Route path='/Login' element={<Login />} />
           <Route path='*' element={<ErrorPage/>} />
           <Route path='/Signup' element={<SignupPage />} />
-          <Route path='/Terms&conditions' element={<TermsandCondition />} />
+          <Route path='/Terms&conditions' element={<TermsAndConditions />} />
           <Route path='/Problems' element={<ProblemList problems={problems}/>} />
           <Route path='/Compiler' element={<Compiler1/>} />
           <Route path='/AddProblems' element={ <AddProblemPage /> } />

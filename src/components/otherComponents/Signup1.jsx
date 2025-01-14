@@ -197,7 +197,8 @@ const SignupPage = () => {
     });
     const { isDark } = useTheme();
     const [checkBox, setCheckBox] = useState(false);
-    const apiUrl = 'https://bcknd.codehub.org.in';
+    // const apiUrl = 'https://bcknd.codehub.org.in';
+    const apiUrl = import.meta.env.VITE_API_URL
     const handleCheckBox = () => {
         setCheckBox(prevCheckBox => !prevCheckBox);
     };
@@ -376,7 +377,7 @@ const SignupPage = () => {
                         </button>
 
                         <div className="mt-0 text-center">
-                            <p className="mb-0">Already have an account?</p>
+                            <p className="mb-0">Don't have an account?</p>
                             <NavLink style={{ textDecoration: 'none', listStyle: 'none' }} to="/login" className="btn btn-link">Log In</NavLink>
                         </div>
                         <ToastContainer />

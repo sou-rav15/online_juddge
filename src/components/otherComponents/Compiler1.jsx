@@ -182,7 +182,8 @@ const Compiler1 = () => {
   const { isDark } = useTheme();
   const navigate = useNavigate();
   // const apiUrl = 'https://bcknd.codehub.org.in';
-  const apiUrl='http://localhost:3000';
+  // const apiUrl='http://localhost:3000';
+  const apiUrl = import.meta.env.VITE_API_URL
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false); // Stop loading after 2 seconds

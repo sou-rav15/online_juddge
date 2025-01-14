@@ -208,6 +208,7 @@ const Compiler2 = ({ problemId }) => {
   const [code, setCode] = useState('');
   const [input, setInput] = useState('');
   const [output, setOutput] = useState('');
+  // const apiUrl = 'https://bcknd.codehub.org.in';
   const apiUrl = 'http://localhost:3000';
   const { isDark } = useTheme();
   const languageMapping = {

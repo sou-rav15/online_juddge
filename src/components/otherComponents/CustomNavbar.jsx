@@ -110,8 +110,8 @@ const CustomNavbar = () => {
     logout();
     navigate('/');
   };
-  // const apiUrl = 'https://bcknd.codehub.org.in';
-  const apiUrl = 'http://localhost:3000';
+  const apiUrl = 'https://bcknd.codehub.org.in';
+  // const apiUrl = 'http://localhost:3000';
     const handleAdmin=async () => {
       const userId =localStorage.getItem('userId');
         try {

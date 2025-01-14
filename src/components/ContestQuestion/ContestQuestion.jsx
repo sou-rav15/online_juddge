@@ -15,8 +15,9 @@ function ContestQuestions() {
   const [showCompletionMessage, setShowCompletionMessage] = useState(false);
   const [remainingTime, setRemainingTime] = useState(0); // Use state to track remaining time
   // const apiUrl = 'http://localhost:8000';
-   // const apiUrl = 'https://bcknd.codehub.org.in';
-   const apiUrl='http://localhost:3000';
+  //  const apiUrl = 'https://bcknd.codehub.org.in';
+  //  const apiUrl='http://localhost:3000';
+  const apiUrl = import.meta.env.VITE_API_URL
   const { active, startTimer } = useTimer();
   const { isAuthenticated } = useAuth(); 
 

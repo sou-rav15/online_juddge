@@ -9,7 +9,8 @@ const ForgotPassword = () => {
     const [error, setError] = useState('');
     const [message, setMessage] = useState('');
     // const apiUrl = import.meta.env.VITE_API_URL;
-    const apiUrl = 'https://bcknd.codehub.org.in';
+    // const apiUrl = 'https://bcknd.codehub.org.in';
+    const apiUrl = import.meta.env.VITE_API_URL
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {

@@ -29,8 +29,9 @@ const AddProblemPage = () => {
     const [error, setError] = useState(null);
     const [success, setSuccess] = useState(null);
     const [loading, setLoading] = useState(false);
-     // const apiUrl = 'https://bcknd.codehub.org.in';
-   const apiUrl='http://localhost:3000';
+    //  const apiUrl = 'https://bcknd.codehub.org.in';
+    const apiUrl = import.meta.env.VITE_API_URL
+//    const apiUrl='http://localhost:3000';
     const handleChange = (e) => {
         setProblem({ ...problem, [e.target.name]: e.target.value });
     };

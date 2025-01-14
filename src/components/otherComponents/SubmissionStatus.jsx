@@ -1,7 +1,8 @@
 const handleProblemSubmission = async (problemId, submissionStatus) => {
     const userId = localStorage.getItem('userId');
     // const apiUrl = import.meta.env.VITE_API_URL;
-    const apiUrl = 'https://bcknd.codehub.org.in';
+    // const apiUrl = 'https://bcknd.codehub.org.in';
+    const apiUrl = import.meta.env.VITE_API_URL
         if (!userId) {
         console.error('User ID is missing from local storage');
         return;

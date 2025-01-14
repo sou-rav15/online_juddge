@@ -14,8 +14,9 @@ const ShowContestQuestion = () => {
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
   const{isAuthenticated}=useAuth();
- // const apiUrl = 'https://bcknd.codehub.org.in';
- const apiUrl='http://localhost:3000';
+//  const apiUrl = 'https://bcknd.codehub.org.in';
+const apiUrl = import.meta.env.VITE_API_URL
+//  const apiUrl='http://localhost:3000';
   const { active, startTimer } = useTimer(); // Only using what's needed
 
   useEffect(() => {

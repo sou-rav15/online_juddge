@@ -16,8 +16,9 @@ const AddTestCase = () => {
   const [output, setOutput] = useState('');
   const { id } = useParams();
   const { isDark } = useTheme();
-   // const apiUrl = 'https://bcknd.codehub.org.in';
-   const apiUrl='http://localhost:3000';
+  //  const apiUrl = 'https://bcknd.codehub.org.in';
+  const apiUrl = import.meta.env.VITE_API_URL
+  //  const apiUrl='http://localhost:3000';
   // console.log('id->',id);
   const handleUnlock = () => {
     if (localStorage.getItem('key')) {

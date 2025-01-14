@@ -17,7 +17,8 @@ import { useTheme } from '../Themes/Themes';
 Chart.register(...registerables);
 
 const ProfilePage = () => {
-  const apiUrl = 'http://localhost:3000';
+  const apiUrl = process.env.REACT_APP_API_URL;
+  // const apiUrl = 'http://localhost:3000';
   // const apiUrl = 'https://bcknd.codehub.org.in';
   const [profile, setProfile] = useState(null);
   const [loading, setLoading] = useState(true); // State for loading
