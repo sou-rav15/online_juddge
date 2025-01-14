@@ -197,8 +197,8 @@ const SignupPage = () => {
     });
     const { isDark } = useTheme();
     const [checkBox, setCheckBox] = useState(false);
-    // const apiUrl = 'https://bcknd.codehub.org.in';
-    const apiUrl = import.meta.env.VITE_API_URL
+    const apiUrl = 'https://bcknd.codehub.org.in';
+    // const apiUrl = import.meta.env.VITE_API_URL
     const handleCheckBox = () => {
         setCheckBox(prevCheckBox => !prevCheckBox);
     };
